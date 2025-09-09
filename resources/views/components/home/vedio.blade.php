@@ -1,15 +1,30 @@
+@php
+use App\Models\Content;
+$data = Content::getData('home.vedio');
+@endphp
+
 <!-- Video Section -->
-<div class="relative mt-[20px] md:mt-[70px] lg:mt-[120px]" x-data="{ open: false, videoSrc: '' }">
+<div class="relative mt-[20px] md:mt-[70px] lg:mt-[120px]"
+    x-data="{ open: false, videoSrc: '' }">
+
     <!-- Thumbnail -->
     <div class="relative">
-        <video autoplay muted loop playsinline 
-       class="rounded-xl w-full object-cover h-[40vh] md:h-[60vh] lg:h-[80vh]">
-    <source src="/images/bg-vedio.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
+        @if(!empty($data['image']))
+        {{-- Custom thumbnail uploaded by admin --}}
+        <img src="{{ asset('storage/'.$data['image']) }}"
+            alt="Video thumbnail"
+            class="rounded-xl w-full object-cover h-[40vh] md:h-[60vh] lg:h-[80vh]">
+        @else
+        {{-- Default looping background video --}}
+        <video autoplay muted loop playsinline
+            class="rounded-xl w-full object-cover h-[40vh] md:h-[60vh] lg:h-[80vh]">
+            <source src="/images/bg-vedio.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        @endif
 
         <!-- Play Button -->
-        <button @click="open = true; videoSrc='https://www.youtube.com/embed/6ke8LghXias?autoplay=1&mute=0'"
+        <button @click="open = true; videoSrc='{{ $data['embed'] ?? 'https://www.youtube.com/embed/6ke8LghXias?autoplay=1&mute=0' }}'"
             class="absolute inset-0 flex items-center justify-center">
             <span class="flex items-center justify-center w-16 h-16 rounded-full bg-white shadow-lg">
                 <i class="fa-solid fa-play text-black text-xl ml-1"></i>

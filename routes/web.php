@@ -3,6 +3,17 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminEditorController;
+
+
+Route::middleware(['auth'])
+    ->prefix('admin')->name('admin.')
+    ->group(function () {
+        Route::get('home-editor', [AdminEditorController::class, 'index'])->name('home-editor');
+        Route::post('home-editor/update', [AdminEditorController::class, 'update'])->name('home-editor.update');
+    });
+
+
 
 Route::get('/', function () {
     return view('home');
@@ -34,6 +45,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
 Route::get('/dashboard', [HomeController::class, 'index'])->middleware('auth')->name('dashboard');
 
 require __DIR__ . '/auth.php';

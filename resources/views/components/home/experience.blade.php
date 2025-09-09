@@ -1,44 +1,35 @@
+@php
+use App\Models\Content;
+$data = Content::getData('home.experience');
+$items = $data['items'] ?? [
+["number" => 35, "suffix" => "+", "title" => "Years of Experience", "desc" => "Lorem ipsum dolor sit amet, consec tetur adipiscing."],
+["number" => 140, "suffix" => "", "title" => "Professional Staffs", "desc" => "Lorem ipsum dolor sit amet, consec tetur adipiscing."],
+["number" => 6.2, "suffix" => "K+", "title" => "Happy Patients", "desc" => "Lorem ipsum dolor sit amet, consec tetur adipiscing."],
+["number" => 99.9, "suffix" => "%", "title" => "Positive Reviews", "desc" => "Lorem ipsum dolor sit amet, consec tetur adipiscing."],
+];
+@endphp
+
 <div class="lg:py-16">
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
-        <!-- Item 1 -->
+        @foreach($items as $item)
         <div class="bg-[#f6f6f6] shadow-sm rounded-2xl p-6 md:p-8 text-center lg:text-left">
             <h2 class="text-[38px] lg:text-6xl font-light text-gray-900"
-                x-data="counter(35)" x-init="start()"
-                x-text="display + '+'"></h2>
-            <h3 class="mt-[30px] text-[18px] lg:mt-[124px] lg:text-[24px] font-light text-gray-800">Years of Experience</h3>
-            <p class="mt-1 text-xs md:text-base text-[#696969] ">Lorem ipsum dolor sit amet, consec tetur adipiscing.</p>
-        </div>
+                x-data="counter({{ $item['number'] }}, {{ str_contains($item['suffix'], '.') || str_contains($item['suffix'], '%') ? 'true' : 'false' }})"
+                x-init="start()"
+                x-text="display + '{{ $item['suffix'] }}'"></h2>
 
-        <!-- Item 2 -->
-        <div class="bg-[#f6f6f6] shadow-sm rounded-2xl p-6 md:p-8 text-center lg:text-left">
-            <h2 class="text-[38px] lg:text-6xl font-light text-gray-900"
-                x-data="counter(140)" x-init="start()"
-                x-text="display"></h2>
-            <h3 class="mt-[30px] text-[18px] lg:mt-[124px] lg:text-[24px] font-light text-gray-800">Professional Staffs</h3>
-            <p class="mt-1 text-xs md:text-base text-[#696969] ">Lorem ipsum dolor sit amet, consec tetur adipiscing.</p>
-        </div>
+            <h3 class="mt-[30px] text-[18px] lg:mt-[124px] lg:text-[24px] font-light text-gray-800">
+                {{ $item['title'] }}
+            </h3>
 
-        <!-- Item 3 -->
-        <div class="bg-[#f6f6f6] shadow-sm rounded-2xl p-6 md:p-8 text-center lg:text-left">
-            <h2 class="text-[38px] lg:text-6xl font-light text-gray-900"
-                x-data="counter(6)" x-init="start()"
-                x-text="display + '.2K+'"></h2>
-            <h3 class="mt-[30px] text-[18px] lg:mt-[124px] lg:text-[24px] font-light text-gray-800">Happy Patients</h3>
-            <p class="mt-1 text-xs md:text-base text-[#696969] ">Lorem ipsum dolor sit amet, consec tetur adipiscing.</p>
+            <p class="mt-1 text-xs md:text-base text-[#696969] ">
+                {{ $item['desc'] }}
+            </p>
         </div>
-
-        <!-- Item 4 -->
-        <div class="bg-[#f6f6f6] shadow-sm rounded-2xl p-6 md:p-8 text-center lg:text-left">
-            <h2 class="text-[38px] lg:text-6xl font-light text-gray-900"
-                x-data="counter(99.9, true)" x-init="start()"
-                x-text="display + '%'"></h2>
-            <h3 class="mt-[30px] text-[18px] lg:mt-[124px] lg:text-[24px] font-light text-gray-800">Positive Reviews</h3>
-            <p class="mt-1 text-xs md:text-base text-[#696969] ">Lorem ipsum dolor sit amet, consec tetur adipiscing.</p>
-        </div>
-
+        @endforeach
     </div>
 </div>
+
 <script src="//unpkg.com/alpinejs" defer></script>
 <script>
     function counter(target, decimal = false) {

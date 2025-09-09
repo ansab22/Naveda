@@ -1,10 +1,16 @@
+@php
+use App\Models\Content;
+$data = Content::getData('home.aboutHome');
+@endphp
+
 <div class="relative bg-white">
     <div class="py-10 lg:py-[90px] flex flex-col-reverse lg:grid lg:grid-cols-2 gap-6 md:gap-12 items-center">
 
         <!-- Left Image -->
         <div class="relative">
-            <img src="/images/care.jpg" alt="Doctor with patient"
-                class="rounded-2xl w-full object-cover h-[100%] md:h-[90vh]">
+            <img src="{{ !empty($data['image']) ? asset('storage/'.$data['image']) : '/images/care.jpg' }}" 
+                 alt="Doctor with patient"
+                 class="rounded-2xl w-full object-cover h-[100%] md:h-[90vh]">
 
             <!-- Small Card -->
             <div class="absolute bottom-3 left-6 bg-[#f5f4f0] shadow-md rounded-xl flex items-center space-x-3 px-4 py-6">
@@ -23,31 +29,27 @@
         <!-- Right Content -->
         <div class="space-y-3 lg:space-y-8">
             <span class="inline-block px-3 lg:px-4 md:px-3 py-1 text-[10px] md:text-[8px] lg:text-[13px] font-medium text-gray-500 bg-[#f5f4f0] rounded-full w-fit">
-                About Eldera
+                {{ $data['badge'] ?? 'About Eldera' }}
             </span>
+
             <h1 class="text-[28px] md:text-[38px] lg:text-6xl text-gray-900  leading-tight">
-                Empowering Care for the Heart and Soul
+                {{ $data['heading'] ?? 'Empowering Care for the Heart and Soul' }}
             </h1>
-            <p class="text-gray-600 text-[10px] md:text-xs lg:text-base">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper vehicula suscipit.
-                Phasellus euismod dui lacinia, venenatis magna non, pretium felis. Nulla velit turpis,
-                congue nec elit sit amet, sodales feugiat neque.
-            </p>
-            <p class="text-gray-600 text-[10px] md:text-xs lg:text-base">
-                Mauris in neque viverra, volutpat elit vitae, consequat arcu. Phasellus condimentum luctus
-                turpis, sed mollis quam tempus eget. Vivamus non tellus varius, sollicitudin diam quis,
-                sagittis libero.
-            </p>
+
+            {{-- Description allow HTML --}}
+            <div class="text-gray-600 text-[10px] md:text-xs lg:text-base space-y-3">
+                {!! $data['description'] ?? '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>' !!}
+            </div>
 
             <!-- Buttons -->
             <div class="flex flex-wrap gap-4">
-                <a href="#"
+                <a href="{{ $data['button_link'] ?? '#' }}"
                     class="px-4 py-2 md:px-6 md:py-3 rounded-full bg-indigo-100 font-medium hover:bg-[#f5f4f0] text-[10px] lg:text-sm transition-colors duration-700 ease-in-out w-fit">
-                    Get In Touch
+                    {{ $data['button_text'] ?? 'Get In Touch' }}
                 </a>
-                <a href="#"
+                <a href="{{ $data['secondary_button_link'] ?? '#' }}"
                     class="flex items-center text-[10px] lg:text-sm text-gray-800 font-medium transition group gap-2">
-                    Appointment
+                    {{ $data['secondary_button_text'] ?? 'Appointment' }}
                     <span class="text-[#c4cffa] group-hover:text-black">
                         <i class="fa-solid fa-arrow-right text-[10px] lg:text-sm"></i>
                     </span>
