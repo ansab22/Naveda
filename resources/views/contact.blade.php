@@ -26,8 +26,6 @@
         src="https://www.google.com/maps?q={{ urlencode($mapLocation) }}&output=embed">
     </iframe>
 
-
-
     <x-home.faqHome />
 </div>
 <div class="lg:-mt-[120px]">

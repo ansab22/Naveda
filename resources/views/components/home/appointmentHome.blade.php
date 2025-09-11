@@ -22,7 +22,7 @@
                 </h1>
             </div>
 
-            <form action="" method="POST" class="space-y-4">
+            <form action="{{ route('appointments.store') }}" method="POST" class="space-y-4">
                 @csrf
                 <!-- Name -->
                 <div class="flex flex-col gap-2">
@@ -51,9 +51,11 @@
                 <!-- Date + Service -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div class="flex flex-col gap-2">
-                        <label for="date_time" class="text-[10px] md:text-xs lg:text-sm  font-medium text-gray-700">Date & Time *</label>
-                        <input type="datetime-local" id="date_time" name="date_time" required
+                        <label for="date" class="text-[10px] md:text-xs lg:text-sm font-medium text-gray-700">Date *</label>
+                        <input type="date" id="date" name="date" required
+                            pattern="\d{4}-\d{2}-\d{2}"
                             class="w-full py-1 px-2 text-[10px] md:text-xs lg:text-sm lg:p-3 border bg-[#fcf9f8] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+
                     </div>
                     <div class="flex flex-col gap-2">
                         <label for="service" class="text-[10px] md:text-xs lg:text-sm font-medium text-gray-700">Service *</label>

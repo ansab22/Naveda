@@ -129,7 +129,7 @@
         <ul class="nav navbar-nav flex-row">
             <li class="nav-item mr-auto"><a class="navbar-brand" href="/">
                     <div class="brand-logo"></div>
-                    <h2 class="brand-text mb-0">ELDERA</h2>
+                    <h2 class="brand-text mb-0">NEVADA</h2>
                 </a></li>
             <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i class="feather icon-x d-block d-xl-none font-medium-4 primary toggle-icon"></i><i class="toggle-icon feather icon-disc font-medium-4 d-none d-xl-block collapse-toggle-icon primary" data-ticon="icon-disc"></i></a></li>
         </ul>
@@ -142,10 +142,11 @@
             </li>
             <li class="{{ request()->is('admin/users*') ? 'active' : '' }}"><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Patient</span></a>
             <li class="{{ request()->is('admin/riddle*') ? 'active' : '' }}"><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Team</span></a>
-            <li class="{{ request()->is('admin/games') ? 'active' : '' }}"><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Appointment</span></a>
+            <li class="{{ request()->is('admin/games') ? 'active' : '' }}"><a href=""><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Appointment</span></a>
             <li class="{{ request()->is('admin/games/pending') ? 'active' : '' }}"><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Update</span></a>
             <li class="{{ request()->is('admin/payment-settings/list') ? 'active' : '' }}"><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Setting</span></a></li>
             <li class="{{ request()->is('admin/payment-settings/list') ? 'active' : '' }}"><a href="{{ route('admin.home-editor') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Edit Site</span></a></li>
+            <li class="{{ request()->is('admin/payment-settings/list') ? 'active' : '' }}"><a href="{{route('contacts.show')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Contact Form</span></a></li>
 
         </ul>
     </div>

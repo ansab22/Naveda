@@ -34,7 +34,7 @@
             <!-- Heading -->
 
 
-            <form action="" method="POST" class="space-y-4">
+            <form action="{{ route('contact.store') }}" method="POST" class="space-y-4">
                 @csrf
                 <!-- Name -->
                 <div class="flex flex-col gap-2">

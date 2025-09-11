@@ -50,10 +50,42 @@
                 <span class="text-[#0C0C0C85] group-hover:text-gray-700">Call Us</span>
             </a>
 
-            <a href="register"
-                class="bg-black hover:bg-[#f5f4f0] text-white hover:text-black px-4 py-2 rounded-full text-sm transition-colors duration-700 ease-in-out">
-                Register
-            </a>
+            <div class="hidden lg:flex items-center space-x-4">
+                @auth
+                {{-- Dropdown --}}
+                <div class="relative" id="user-dropdown">
+                    <button id="user-dropdown-btn"
+                        class="flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full text-sm cursor-pointer">
+                        <i class="fa-solid fa-user text-[#c4cffa]"></i>
+                        <span class="text-gray-700">{{ ucfirst(Auth::user()->role) }}</span>
+                        <i class="fa-solid fa-chevron-down text-xs"></i>
+                    </button>
+
+                    {{-- Dropdown menu --}}
+                    <div id="user-dropdown-menu"
+                        class="absolute right-0 mt-2 w-40 bg-white border rounded-lg shadow-lg hidden z-50">
+                        <a href="{{ Auth::user()->role === 'receptionist' ? route('receptionist.dashboard') : route('admin.dashboard') }}"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                            Dashboard
+                        </a>
+
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit"
+                                class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                Logout
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                @else
+                {{-- If not logged in --}}
+                <a href="register"
+                    class="bg-black hover:bg-[#f5f4f0] text-white hover:text-black px-4 py-2 rounded-full text-sm transition-colors duration-700 ease-in-out">
+                    Register
+                </a>
+                @endauth
+            </div>
         </div>
 
         <!-- Mobile Menu Button -->
@@ -161,4 +193,21 @@
 
     setupDropdown('servicesDropdown', 'servicesMenu');
     setupDropdown('pagesDropdown', 'pagesMenu');
+</script>
+{{-- Script --}}
+<script>
+    const dropdown = document.getElementById('user-dropdown');
+    const menu = document.getElementById('user-dropdown-menu');
+    let timeout;
+
+    dropdown.addEventListener('mouseenter', () => {
+        clearTimeout(timeout);
+        menu.classList.remove('hidden');
+    });
+
+    dropdown.addEventListener('mouseleave', () => {
+        timeout = setTimeout(() => {
+            menu.classList.add('hidden');
+        }, 300); // 👈 0.5 second stay after hover
+    });
 </script>

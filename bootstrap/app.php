@@ -6,12 +6,16 @@ use Illuminate\Foundation\Configuration\Middleware;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
-        web: __DIR__.'/../routes/web.php',
-        commands: __DIR__.'/../routes/console.php',
+        web: __DIR__ . '/../routes/web.php',
+        commands: __DIR__ . '/../routes/console.php',
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        // Yaha apna custom middleware register karo
+        $middleware->alias([
+            'admin' => \App\Http\Middleware\Admin::class,
+            'receptionist' => \App\Http\Middleware\Receptionist::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

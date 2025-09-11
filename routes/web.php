@@ -4,16 +4,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminEditorController;
-
-
-Route::middleware(['auth'])
-    ->prefix('admin')->name('admin.')
-    ->group(function () {
-        Route::get('home-editor', [AdminEditorController::class, 'index'])->name('home-editor');
-        Route::post('home-editor/update', [AdminEditorController::class, 'update'])->name('home-editor.update');
-    });
-
-
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\ReceptionistController;
 
 Route::get('/', function () {
     return view('home');
@@ -36,6 +29,8 @@ Route::get('/faqs', function () {
 Route::get('/contact', function () {
     return view('contact');
 });
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -46,6 +41,23 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/dashboard', [HomeController::class, 'index'])->middleware('auth')->name('dashboard');
+// Admin routes
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin/dashboard', [HomeController::class, 'index'])->name('admin.dashboard');
+    Route::get('/admin/appointments', [AppointmentController::class, 'index'])->name('admin.appointments.show');
+    Route::get('/contact/form', [ContactController::class, 'index'])->name('contacts.show');
+    Route::get('/admin/home-editor', [AdminEditorController::class, 'index'])->name('admin.home-editor');
+    Route::post('/admin/home-editor/update', [AdminEditorController::class, 'update'])->name('admin.home-editor.update');
+});
+
+// Receptionist routes
+Route::middleware(['auth', 'receptionist'])->group(function () {
+    Route::get('/receptionist/dashboard', [ReceptionistController::class, 'index'])->name('receptionist.dashboard');
+    Route::get('/receptionist/appointments', [AppointmentController::class, 'index'])->name('receptionist.appointments.show');
+    Route::get('/receptionist/contact/form', [ContactController::class, 'index'])->name('receptionist.contacts.show');
+});
+
+Route::post('/appointments', [AppointmentController::class, 'store'])->name('appointments.store');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 require __DIR__ . '/auth.php';
