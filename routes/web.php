@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminEditorController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ReceptionistController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('home');
@@ -56,7 +57,9 @@ Route::middleware(['auth', 'receptionist'])->group(function () {
     Route::get('/receptionist/appointments', [AppointmentController::class, 'index'])->name('receptionist.appointments.show');
     Route::get('/receptionist/contact/form', [ContactController::class, 'index'])->name('receptionist.contacts.show');
 });
-
+Route::middleware(['auth', 'user'])->group(function () {
+    Route::get('/user/dashboard', [UserController::class, 'index'])->name('user.dashboard');
+});
 Route::post('/appointments', [AppointmentController::class, 'store'])->name('appointments.store');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 

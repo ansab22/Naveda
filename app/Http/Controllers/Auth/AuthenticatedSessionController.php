@@ -39,7 +39,7 @@ class AuthenticatedSessionController extends Controller
         }
 
         // Default normal user
-        return redirect()->route('dashboard');
+        return redirect()->route('user.dashboard');
     }
 
 
