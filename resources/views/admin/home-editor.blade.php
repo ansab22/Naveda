@@ -1217,8 +1217,15 @@
 
             <label class="block text-sm font-medium">Features (comma separated)</label>
             <input type="text" name="data[items][{{ $i }}][features]" value="{{ is_array($pkg['features']) ? implode(',', $pkg['features']) : '' }}" class="w-full border p-2 rounded">
+
+            <label class="block text-sm font-medium">Button Text</label>
+            <input type="text" name="data[items][{{ $i }}][button_text]" value="{{ $pkg['button_text'] ?? 'Get Started' }}" class="w-full border p-2 rounded">
+
+            <label class="block text-sm font-medium">Button Link</label>
+            <input type="text" name="data[items][{{ $i }}][button_link]" value="{{ $pkg['button_link'] ?? '#' }}" class="w-full border p-2 rounded">
         </div>
         @endforeach
+
 
         <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">
             Save Pricing Section

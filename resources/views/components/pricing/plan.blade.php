@@ -72,9 +72,10 @@ $button = $pricing['button'] ?? ['text' => 'Get In Touch', 'link' => '#'];
             </ul>
 
             <div class="mt-6">
-                <button class="w-full bg-indigo-100 text-black-800 text-xs lg:text-sm font-semibold py-3 rounded-full hover:bg-white duration-500">
-                    Get Started
-                </button>
+                <a href="{{ $item['button_link'] ?? '#' }}"
+                    class="w-full block text-center bg-indigo-100 text-black-800 text-xs lg:text-sm font-semibold py-3 rounded-full hover:bg-white duration-500">
+                    {{ $item['button_text'] ?? 'Get Started' }}
+                </a>
                 <p class="mt-3 text-[10px] lg:text-xs text-gray-500">*Terms and Conditions apply</p>
             </div>
         </div>

@@ -272,19 +272,25 @@ class AdminEditorController extends Controller
                     "price" => "$400",
                     "title" => "Basic Package",
                     "desc" => "Lorem ipsum dolor sit amet, consec tetur adipiscing elit.",
-                    "features" => ["Personal Care Assistance", "Meal Preparation", "Medication Reminders", "Companionship"]
+                    "features" => ["Personal Care Assistance", "Meal Preparation", "Medication Reminders", "Companionship"],
+                    "button_text" => "Get Started",
+                    "button_link" => "#"
                 ],
                 [
                     "price" => "$520",
                     "title" => "Standard Package",
                     "desc" => "Lorem ipsum dolor sit amet, consec tetur adipiscing elit.",
-                    "features" => ["Personal Care Assistance", "Meal Preparation", "Medication Reminders", "Transportation Support"]
+                    "features" => ["Personal Care Assistance", "Meal Preparation", "Medication Reminders", "Transportation Support"],
+                    "button_text" => "Get Started",
+                    "button_link" => "#"
                 ],
                 [
                     "price" => "$640",
                     "title" => "Premium Package",
                     "desc" => "Lorem ipsum dolor sit amet, consec tetur adipiscing elit.",
-                    "features" => ["Personal Care Assistance", "Meal Preparation", "Medication Reminders", "24/7 Support"]
+                    "features" => ["Personal Care Assistance", "Meal Preparation", "Medication Reminders", "24/7 Support"],
+                    "button_text" => "Get Started",
+                    "button_link" => "#"
                 ],
             ];
 
@@ -295,6 +301,9 @@ class AdminEditorController extends Controller
                     $desc = trim($item['desc'] ?? '');
                     $features = !empty($item['features']) ? array_map('trim', explode(',', $item['features'])) : [];
 
+                    $buttonText = trim($item['button_text'] ?? 'Get Started');
+                    $buttonLink = trim($item['button_link'] ?? '#');
+
                     if (empty($price) || empty($title) || empty($desc) || empty($features)) {
                         $data['items'][$i] = $defaultPackages[$i] ?? [];
                     } else {
@@ -302,7 +311,9 @@ class AdminEditorController extends Controller
                             'price' => $price,
                             'title' => $title,
                             'desc' => $desc,
-                            'features' => $features
+                            'features' => $features,
+                            'button_text' => $buttonText,
+                            'button_link' => $buttonLink,
                         ];
                     }
                 }
@@ -310,6 +321,7 @@ class AdminEditorController extends Controller
                 $data['items'] = $defaultPackages;
             }
         }
+
 
 
 
