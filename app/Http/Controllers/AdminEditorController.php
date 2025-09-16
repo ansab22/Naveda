@@ -257,14 +257,16 @@ class AdminEditorController extends Controller
         }
 
         // Handle single image upload for other sections
-        if ($request->hasFile('image') && !in_array($key, ['home.faqHome', 'home.aboutEldera', 'about.service', 'faq.aboutServices', 'faq.aboutPayment', 'faq.otherQuestions'])) {
-            $data['image'] = $request->file('image')->store('content', 'public');
-        } else if (!in_array($key, ['home.faqHome', 'home.aboutEldera', 'about.service', 'faq.aboutServices', 'faq.aboutPayment', 'faq.otherQuestions'])) {
-            $existingData = Content::getData($key);
-            if (isset($existingData['image'])) {
-                $data['image'] = $existingData['image'];
+        if (!in_array($key, ['home.faqHome', 'home.aboutEldera', 'about.service', 'faq.aboutServices', 'faq.aboutPayment', 'faq.otherQuestions'])) {
+            if ($request->hasFile('image')) {
+                // Agar naya image upload ho to usko save karo
+                $data['image'] = $request->file('image')->store('content', 'public');
+            } else {
+                // Agar image upload nahi hua to DB me empty save karo
+                $data['image'] = '';
             }
         }
+
 
         if ($key === 'home.pricing') {
             $defaultPackages = [
@@ -321,6 +323,7 @@ class AdminEditorController extends Controller
                 $data['items'] = $defaultPackages;
             }
         }
+
 
 
 

@@ -58,8 +58,13 @@ $data = Content::getData('home.heroHome');
     {{-- Right Image --}}
     <div class="w-full lg:w-1/2 relative flex justify-center lg:justify-end items-center">
         <div class="bg-[#f5f4f0] pt-5 px-8 rounded-[20px]">
-            <img src="{{ !empty($data['image']) ? asset('storage/'.$data['image']) : '/images/hero.png' }}"
-                alt="Nurse and patient" class="w-full max-w-sm mx-auto" />
+            <img src="{{ !empty($data['image']) 
+    ? asset('storage/'.$data['image']) 
+    : asset('/images/hero.png') }}"
+                alt="Nurse and patient"
+                class="w-full max-w-sm mx-auto"
+                onerror="this.src='/images/hero.png';" />
+
 
             {{-- Overlay Card --}}
             <div class="absolute bottom-10 left-21 bg-white rounded-xl shadow-md px-3 py-1 md:px-4 md:py-3 flex items-center gap-3 w-fit text-sm">

@@ -26,7 +26,7 @@ class AppointmentController extends Controller
             'date'      => $request->date,
             'service'   => $request->service,
             'message'   => $request->message,
-            'user_id'   => Auth::id(), // logged in user ka ID store hoga
+            'user_id'   => Auth::id(), 
         ]);
 
         return back()->with('success', 'Appointment booked successfully!');

@@ -142,7 +142,7 @@
             </li>
             <li class="{{ request()->is('admin/users*') ? 'active' : '' }}"><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Patient</span></a>
             <li class="{{ request()->is('admin/riddle*') ? 'active' : '' }}"><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Team</span></a>
-            <li class="{{ request()->is('admin/games') ? 'active' : '' }}"><a href=""><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Appointment</span></a>
+            <li class="{{ request()->is('admin/games') ? 'active' : '' }}"><a href="{{ route('admin.appointments.show') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Appointment</span></a>
             <li class="{{ request()->is('admin/games/pending') ? 'active' : '' }}"><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Update</span></a>
             <li class="{{ request()->is('admin/payment-settings/list') ? 'active' : '' }}"><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Setting</span></a></li>
             <li class="{{ request()->is('admin/payment-settings/list') ? 'active' : '' }}"><a href="{{ route('admin.home-editor') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Edit Site</span></a></li>

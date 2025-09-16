@@ -8,10 +8,9 @@ $data = Content::getData('home.aboutHome');
 
         <!-- Left Image -->
         <div class="relative">
-            <img src="{{ !empty($data['image']) ? asset('storage/'.$data['image']) : '/images/care.jpg' }}" 
-                 alt="Doctor with patient"
-                 class="rounded-2xl w-full object-cover h-[100%] md:h-[90vh]">
-
+            <img src="{{ !empty($data['image']) ? asset('storage/'.$data['image']) : '/images/care.jpg' }}"
+                alt="Doctor with patient"
+                class="rounded-2xl w-full object-cover h-[100%] md:h-[90vh]">
             <!-- Small Card -->
             <div class="absolute bottom-3 left-6 bg-[#f5f4f0] shadow-md rounded-xl flex items-center space-x-3 px-4 py-6">
                 <div class="flex -space-x-2">
