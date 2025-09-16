@@ -296,33 +296,27 @@ class AdminEditorController extends Controller
                 ],
             ];
 
-            if (!empty($data['items']) && is_array($data['items'])) {
-                foreach ($data['items'] as $i => $item) {
-                    $price = trim($item['price'] ?? '');
-                    $title = trim($item['title'] ?? '');
-                    $desc = trim($item['desc'] ?? '');
-                    $features = !empty($item['features']) ? array_map('trim', explode(',', $item['features'])) : [];
+            $packages = [];
 
-                    $buttonText = trim($item['button_text'] ?? 'Get Started');
-                    $buttonLink = trim($item['button_link'] ?? '#');
+            // Always loop for 3 packages
+            for ($i = 0; $i < 3; $i++) {
+                $item = $data['items'][$i] ?? [];
 
-                    if (empty($price) || empty($title) || empty($desc) || empty($features)) {
-                        $data['items'][$i] = $defaultPackages[$i] ?? [];
-                    } else {
-                        $data['items'][$i] = [
-                            'price' => $price,
-                            'title' => $title,
-                            'desc' => $desc,
-                            'features' => $features,
-                            'button_text' => $buttonText,
-                            'button_link' => $buttonLink,
-                        ];
-                    }
-                }
-            } else {
-                $data['items'] = $defaultPackages;
+                $packages[$i] = [
+                    'price'       => $item['price'] ?? '',
+                    'title'       => $item['title'] ?? '',
+                    'desc'        => $item['desc'] ?? '',
+                    'features'    => !empty($item['features'])
+                        ? array_map('trim', explode(',', $item['features']))
+                        : [],
+                    'button_text' => $item['button_text'] ?? '',
+                    'button_link' => $item['button_link'] ?? '',
+                ];
             }
+
+            $data['items'] = $packages;
         }
+
 
 
 

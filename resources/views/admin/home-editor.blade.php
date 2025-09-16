@@ -1202,35 +1202,43 @@
         $pricingPackages = $data['home.pricing']['items'] ?? [];
         @endphp
 
-        @foreach($pricingPackages as $i => $pkg)
-        <div class="p-4 border rounded bg-gray-50 space-y-4">
+        @for($i = 0; $i < 3; $i++)
+            @php $pkg=$pricingPackages[$i] ?? []; @endphp
+            <div class="p-4 border rounded bg-gray-50 space-y-4">
             <h3 class="font-medium text-lg">Package {{ $i + 1 }}</h3>
 
             <label class="block text-sm font-medium">Price</label>
-            <input type="text" name="data[items][{{ $i }}][price]" value="{{ $pkg['price'] ?? '' }}" class="w-full border p-2 rounded">
+            <input type="text" name="data[items][{{ $i }}][price]"
+                value="{{ $pkg['price'] ?? '' }}" class="w-full border p-2 rounded">
 
             <label class="block text-sm font-medium">Title</label>
-            <input type="text" name="data[items][{{ $i }}][title]" value="{{ $pkg['title'] ?? '' }}" class="w-full border p-2 rounded">
+            <input type="text" name="data[items][{{ $i }}][title]"
+                value="{{ $pkg['title'] ?? '' }}" class="w-full border p-2 rounded">
 
             <label class="block text-sm font-medium">Description</label>
             <textarea name="data[items][{{ $i }}][desc]" class="w-full border p-2 rounded">{{ $pkg['desc'] ?? '' }}</textarea>
 
             <label class="block text-sm font-medium">Features (comma separated)</label>
-            <input type="text" name="data[items][{{ $i }}][features]" value="{{ is_array($pkg['features']) ? implode(',', $pkg['features']) : '' }}" class="w-full border p-2 rounded">
+            <input type="text" name="data[items][{{ $i }}][features]"
+                value="{{ is_array($pkg['features'] ?? null) ? implode(',', $pkg['features']) : '' }}" class="w-full border p-2 rounded">
 
             <label class="block text-sm font-medium">Button Text</label>
-            <input type="text" name="data[items][{{ $i }}][button_text]" value="{{ $pkg['button_text'] ?? 'Get Started' }}" class="w-full border p-2 rounded">
+            <input type="text" name="data[items][{{ $i }}][button_text]"
+                value="{{ $pkg['button_text'] ?? '' }}" class="w-full border p-2 rounded">
 
             <label class="block text-sm font-medium">Button Link</label>
-            <input type="text" name="data[items][{{ $i }}][button_link]" value="{{ $pkg['button_link'] ?? '#' }}" class="w-full border p-2 rounded">
-        </div>
-        @endforeach
+            <input type="text" name="data[items][{{ $i }}][button_link]"
+                value="{{ $pkg['button_link'] ?? '' }}" class="w-full border p-2 rounded">
+            </div>
+            @endfor
 
 
 
-        <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">
-            Save Pricing Section
-        </button>
+
+
+            <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">
+                Save Pricing Section
+            </button>
     </form>
 </section>
 
