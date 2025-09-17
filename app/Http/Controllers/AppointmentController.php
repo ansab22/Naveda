@@ -26,7 +26,7 @@ class AppointmentController extends Controller
             'date'      => $request->date,
             'service'   => $request->service,
             'message'   => $request->message,
-            'user_id'   => Auth::id(), 
+            'user_id'   => Auth::id(),
         ]);
 
         return back()->with('success', 'Appointment booked successfully!');
@@ -45,6 +45,11 @@ class AppointmentController extends Controller
         if ($user->role === 'receptionist') {
             $appointments = Appointment::latest()->get();
             return view('receptionist.appointments.show', compact('appointments'));
+        }
+        // ✅ User: show only his own appointments
+        if ($user->role === 'user') {
+            $appointments = Appointment::where('user_id', $user->id)->latest()->get();
+            return view('user.appointments.index', compact('appointments'));
         }
     }
 }

@@ -3,25 +3,23 @@
 
         <!-- Logo -->
         <div class="flex items-center space-x-2">
-            <a href="/"><img src="/images/logo.png" alt="Logo" class="h-8 lg:h-12"></a>
+            <a href="{{ route('home') }}">
+                <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-8 lg:h-12">
+            </a>
+
         </div>
 
 
 
         <!-- Desktop Menu -->
         <nav class="hidden lg:flex space-x-8 items-center">
-            <a href="/" class="text-[#0C0C0C85] text-sm hover:text-gray-700 font-medium">Home</a>
-            <a href="about" class="text-[#0C0C0C85] text-sm hover:text-gray-700 font-medium">About</a>
-
-            <!-- Services Dropdown -->
-            <div class="relative group" id="servicesDropdown">
-                <a href="services" class="text-[#0C0C0C85] text-sm hover:text-gray-700 font-medium">
-                    Services
-                </a>
-            </div>
-            <a href="appointment" class="text-[#0C0C0C85] text-sm hover:text-gray-700 font-medium">Appointment</a>
-            <a href="faqs" class="text-[#0C0C0C85] text-sm hover:text-gray-700 font-medium">Faqs</a>
-            <a href="pricing" class="text-[#0C0C0C85] text-sm hover:text-gray-700 font-medium">Pricing</a>
+            <a href="{{ route('home') }}" class="text-[#0C0C0C85] text-sm hover:text-gray-700 font-medium">Home</a>
+            <a href="{{ route('about') }}" class="text-[#0C0C0C85] text-sm hover:text-gray-700 font-medium">About</a>
+            <a href="{{ route('services') }}" class="text-[#0C0C0C85] text-sm hover:text-gray-700 font-medium">Services</a>
+            <a href="{{ route('appointment') }}" class="text-[#0C0C0C85] text-sm hover:text-gray-700 font-medium">Appointment</a>
+            <a href="{{ route('faqs') }}" class="text-[#0C0C0C85] text-sm hover:text-gray-700 font-medium">Faqs</a>
+            <a href="{{ route('pricing') }}" class="text-[#0C0C0C85] text-sm hover:text-gray-700 font-medium">Pricing</a>
+            <a href="{{ route('contact') }}" class="text-[#0C0C0C85] hover:text-black text-sm font-medium">Contact</a>
             <!-- Pages Dropdown -->
             <!-- <div class="relative group" id="pagesDropdown">
                 <button class="text-[#0C0C0C85] hover:text-gray-700 text-sm flex items-center group">
@@ -40,7 +38,6 @@
                 </div>
             </div> -->
 
-            <a href="contact" class="text-[#0C0C0C85] hover:text-black text-sm font-medium">Contact</a>
         </nav>
 
         <!-- Right Buttons -->
@@ -57,15 +54,22 @@
                     <button id="user-dropdown-btn"
                         class="flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full text-sm cursor-pointer">
                         <i class="fa-solid fa-user text-[#c4cffa]"></i>
-                        <span class="text-gray-700">{{ ucfirst(Auth::user()->role) }}</span>
+                        <span class="text-gray-700">{{ Auth::user()->name }}</span>
                         <i class="fa-solid fa-chevron-down text-xs"></i>
                     </button>
 
                     {{-- Dropdown menu --}}
                     <div id="user-dropdown-menu"
                         class="absolute right-0 mt-2 w-40 bg-white border rounded-lg shadow-lg hidden z-50">
-                        <a href="{{ Auth::user()->role === 'receptionist' ? route('receptionist.dashboard') : route('admin.dashboard') }}"
-                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                        <a href="
+    @if(Auth::user()->role === 'admin')
+        {{ route('admin.dashboard') }}
+    @elseif(Auth::user()->role === 'receptionist')
+        {{ route('receptionist.dashboard') }}
+    @elseif(Auth::user()->role === 'user')
+        {{ route('user.dashboard') }}
+    @endif
+" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                             Dashboard
                         </a>
 
@@ -108,13 +112,13 @@
 
         <!-- Links -->
         <div class="space-y-2 flex flex-col items-center text-center  min-h-screen py-6">
-            <a href="/" class="block py-2 text-gray-500 hover:text-gray-900 hover:font-medium transition">Home</a>
-            <a href="about" class="block py-2 text-gray-500 hover:text-gray-900 hover:font-medium transition">About</a>
-            <a href="services" class="block py-2 text-gray-500 hover:text-gray-900 hover:font-medium transition">Services</a>
-            <a href="appointment" class="block py-2 text-gray-500 hover:text-gray-900 hover:font-medium transition">Appointment</a>
-            <a href="faqs" class="block py-2 text-gray-500 hover:text-gray-900 hover:font-medium transition">FAQs</a>
-            <a href="pricing" class="block py-2 text-gray-500 hover:text-gray-900 hover:font-medium transition">Pricing</a>
-            <a href="contact" class="block py-2 text-gray-500 hover:text-gray-900 hover:font-medium transition">Contact</a>
+            <a href="{{ route('home') }}" class="block py-2 text-gray-500 hover:text-gray-900 hover:font-medium transition">Home</a>
+            <a href="{{ route('about') }}" class="block py-2 text-gray-500 hover:text-gray-900 hover:font-medium transition">About</a>
+            <a href="{{ route('services') }}" class="block py-2 text-gray-500 hover:text-gray-900 hover:font-medium transition">Services</a>
+            <a href="{{ route('appointment') }}" class="block py-2 text-gray-500 hover:text-gray-900 hover:font-medium transition">Appointment</a>
+            <a href="{{ route('faqs') }}" class="block py-2 text-gray-500 hover:text-gray-900 hover:font-medium transition">FAQs</a>
+            <a href="{{ route('pricing') }}" class="block py-2 text-gray-500 hover:text-gray-900 hover:font-medium transition">Pricing</a>
+            <a href="{{ route('contact') }}" class="block py-2 text-gray-500 hover:text-gray-900 hover:font-medium transition">Contact</a>
 
             <!-- CTA Button -->
             <a href="register" class="mt-6 bg-black hover:bg-indigo-700 border rounded-full text-white px-8 py-2 text-sm transition-colors duration-500 ease-in-out">

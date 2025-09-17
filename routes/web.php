@@ -11,25 +11,32 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
+
 Route::get('/about', function () {
     return view('about');
-});
+})->name('about');
+
 Route::get('/services', function () {
     return view('services');
-});
+})->name('services');
+
 Route::get('/appointment', function () {
     return view('appointment');
-});
+})->name('appointment');
+
 Route::get('/pricing', function () {
     return view('pricing');
-});
+})->name('pricing');
+
 Route::get('/faqs', function () {
     return view('faq');
-});
+})->name('faqs');
+
 Route::get('/contact', function () {
     return view('contact');
-});
+})->name('contact');
+
 
 
 Route::get('/dashboard', function () {
@@ -59,8 +66,17 @@ Route::middleware(['auth', 'receptionist'])->group(function () {
 });
 Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/user/dashboard', [UserController::class, 'index'])->name('user.dashboard');
+    Route::get('/user/appointments', [AppointmentController::class, 'index'])->name('user.appointments');
+
+    // User only contacts
+    Route::get('/user/contacts', [ContactController::class, 'index'])->name('user.contacts');
 });
-Route::post('/appointments', [AppointmentController::class, 'store'])->name('appointments.store');
-Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+Route::post('/appointments', [AppointmentController::class, 'store'])
+    ->name('appointments.store')
+    ->middleware('auth');
+
+Route::post('/contact/store', [ContactController::class, 'store'])
+    ->name('contact.store')
+    ->middleware('auth');
 
 require __DIR__ . '/auth.php';

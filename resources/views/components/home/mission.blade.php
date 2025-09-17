@@ -41,7 +41,6 @@ asset('images/img-3.jpg'),
 
         // Default image depends on index (0 = img-1, 1 = img-2, 2 = img-3)
         $src = $defaultImages[$i] ?? asset('images/default.jpg');
-
         if ($img) {
         if (Str::startsWith($img, ['http', 'https', '/images', '/storage'])) {
         $src = $img;
@@ -49,6 +48,7 @@ asset('images/img-3.jpg'),
         $src = asset('storage/'.$img);
         }
         }
+
         @endphp
 
         <div class="flex flex-col {{ $i % 2 == 1 ? 'md:flex-row-reverse' : 'md:flex-row' }} items-center justify-between gap-4">

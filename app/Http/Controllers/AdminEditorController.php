@@ -26,11 +26,9 @@ class AdminEditorController extends Controller
             'home.teamHome',
             'home.faqHome',
             'footer',
-
             'faq.aboutServices',
             'faq.aboutPayment',
             'faq.otherQuestions',
-
             'home.pricing',
             'home.map'
         ];
@@ -55,6 +53,29 @@ class AdminEditorController extends Controller
 
         $key  = $request->input('key');
         $data = $request->input('data', []);
+
+
+        if ($key === 'home.experience') {
+            $defaultItems = [
+                ["number" => 35, "suffix" => "+", "title" => "Years of Experience", "desc" => "Lorem ipsum dolor sit amet, consec tetur adipiscing."],
+                ["number" => 140, "suffix" => "", "title" => "Professional Staffs", "desc" => "Lorem ipsum dolor sit amet, consec tetur adipiscing."],
+                ["number" => 6.2, "suffix" => "K+", "title" => "Happy Patients", "desc" => "Lorem ipsum dolor sit amet, consec tetur adipiscing."],
+                ["number" => 99.9, "suffix" => "%", "title" => "Positive Reviews", "desc" => "Lorem ipsum dolor sit amet, consec tetur adipiscing."],
+            ];
+
+            if (!empty($data['items']) && is_array($data['items'])) {
+                foreach ($data['items'] as $i => $item) {
+                    $data['items'][$i]['number'] = !empty($item['number']) ? $item['number'] : $defaultItems[$i]['number'];
+                    $data['items'][$i]['suffix'] = !empty($item['suffix']) ? $item['suffix'] : $defaultItems[$i]['suffix'];
+                    $data['items'][$i]['title']  = !empty($item['title']) ? $item['title'] : $defaultItems[$i]['title'];
+                    $data['items'][$i]['desc']   = !empty($item['desc']) ? $item['desc'] : $defaultItems[$i]['desc'];
+                }
+            } else {
+                // agar admin ne pura section blank chor diya
+                $data['items'] = $defaultItems;
+            }
+        }
+
 
         // Handle FAQ All sections specifically
         if (in_array($key, ['faq.aboutServices', 'faq.aboutPayment', 'faq.otherQuestions'])) {
@@ -257,15 +278,13 @@ class AdminEditorController extends Controller
         }
 
         // Handle single image upload for other sections
-        if (!in_array($key, ['home.faqHome', 'home.aboutEldera', 'about.service', 'faq.aboutServices', 'faq.aboutPayment', 'faq.otherQuestions'])) {
-            if ($request->hasFile('image')) {
-                // Agar naya image upload ho to usko save karo
-                $data['image'] = $request->file('image')->store('content', 'public');
-            } else {
-                // Agar image upload nahi hua to DB me empty save karo
-                $data['image'] = '';
-            }
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('content', 'public');
+        } else {
+            $existingData = Content::getData($key);
+            $data['image'] = $existingData['image'] ?? '';
         }
+
 
 
         if ($key === 'home.pricing') {
@@ -315,6 +334,32 @@ class AdminEditorController extends Controller
             }
 
             $data['items'] = $packages;
+        }
+        if ($key === 'home.mission') {
+            $defaultItems = [
+                ["title" => "Improving lives through dedication and skill", "image" => ""],
+                ["title" => "Excellence in nursing, every step of the way", "image" => ""],
+                ["title" => "Inspired by elegance, driven by compassion", "image" => ""],
+            ];
+
+            // Process items
+            if (!empty($data['items']) && is_array($data['items'])) {
+                foreach ($data['items'] as $i => $item) {
+                    // Title default
+                    $data['items'][$i]['title'] = !empty($item['title']) ? $item['title'] : $defaultItems[$i]['title'];
+
+                    // Image handle
+                    if ($request->hasFile("data.items.$i.image")) {
+                        $data['items'][$i]['image'] = $request->file("data.items.$i.image")->store('content/mission', 'public');
+                    } else {
+                        // Agar admin ne empty chor diya to default (yahan DB me empty hi save karenge)
+                        $data['items'][$i]['image'] = $item['image'] ?? '';
+                    }
+                }
+            } else {
+                // Agar admin ne pura section hi blank chor diya
+                $data['items'] = $defaultItems;
+            }
         }
 
 

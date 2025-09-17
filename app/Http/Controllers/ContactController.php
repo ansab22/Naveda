@@ -26,6 +26,11 @@ class ContactController extends Controller
             $contacts = Contact::latest()->get();
             return view('receptionist.contacts.show', compact('contacts'));
         }
+        // ✅ User: show only his own contact forms
+        if ($user->role === 'user') {
+            $contacts = Contact::where('email', $user->email)->latest()->get();
+            return view('user.contacts.index', compact('contacts'));
+        }
     }
 
 

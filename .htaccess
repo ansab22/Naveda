@@ -1,0 +1,18 @@
+<IfModule mod_rewrite.c>
+    Options +FollowSymLinks
+    RewriteEngine On
+
+    # Redirect to the public folder
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)$ /public/$1 [L]
+
+    # Rewrite to index.php
+    RewriteRule ^(/)?$ public/index.php [L]
+</IfModule>
+
+# Force PHP 8.3
+<IfModule mime_module>
+    AddHandler application/x-httpd-alt-php83 .php
+</IfModule>
