@@ -67,9 +67,6 @@ Route::middleware(['auth', 'receptionist'])->group(function () {
 Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/user/dashboard', [UserController::class, 'index'])->name('user.dashboard');
     Route::get('/user/appointments', [AppointmentController::class, 'index'])->name('user.appointments');
-
-    // User only contacts
-    Route::get('/user/contacts', [ContactController::class, 'index'])->name('user.contacts');
 });
 Route::post('/appointments', [AppointmentController::class, 'store'])
     ->name('appointments.store')

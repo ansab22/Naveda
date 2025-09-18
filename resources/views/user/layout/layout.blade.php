@@ -44,7 +44,7 @@
                     <nav class="space-y-2">
 
                         <a href="{{ route('user.appointments') }}" class="block px-4 py-2 text-gray-300 hover:bg-gray-200 rounded">Appointment</a>
-                        <a href="{{ route('user.contacts') }}" class="block px-4 py-2 text-gray-300 hover:bg-gray-200 rounded">Contact</a>
+
                     </nav>
                 </div>
             </div>
@@ -58,7 +58,7 @@
                     <nav class="p-4 space-y-2 flex-1">
 
                         <a href="{{ route('user.appointments') }}" class="block px-4 py-2  hover:bg-white/10 rounded">Appointment</a>
-                        <a href="{{ route('user.contacts') }}" class="block px-4 py-2 hover:bg-white/10 rounded transition">Contact</a>
+
 
                     </nav>
                 </aside>
