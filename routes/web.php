@@ -69,11 +69,9 @@ Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/user/appointments', [AppointmentController::class, 'index'])->name('user.appointments');
 });
 Route::post('/appointments', [AppointmentController::class, 'store'])
-    ->name('appointments.store')
-    ->middleware('auth');
+    ->name('appointments.store');
 
 Route::post('/contact/store', [ContactController::class, 'store'])
-    ->name('contact.store')
-    ->middleware('auth');
+    ->name('contact.store');
 
 require __DIR__ . '/auth.php';
