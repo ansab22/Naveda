@@ -16,7 +16,9 @@
         <li>Password: {{ $password }}</li>
     </ul>
 
+    <p>Please login and change your password.</p>
     <p>You can log in here: <a href="{{ url('/login') }}">{{ url('/login') }}</a></p>
+
 
     <p>Best regards,<br>Healthcare Team</p>
 </body>

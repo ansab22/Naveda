@@ -19,13 +19,20 @@
     </thead>
     <tbody>
         @foreach ($appointments as $appointment)
-        <tr>
+        <tr class="text-center">
             <td class="border p-2">{{ $appointment->name }}</td>
             <td class="border p-2">{{ $appointment->email }}</td>
             <td class="border p-2">{{ $appointment->date }}</td>
             <td class="border p-2">{{ $appointment->service }}</td>
             <td class="border p-2">{{ $appointment->message ?? '-' }}</td>
-            <td class="border p-2">{{ ucfirst($appointment->status ?? 'pending') }}</td>
+            <td class="px-4 py-2 border">
+                <span class="px-2 py-1 rounded 
+        @if($appointment->status == 'approved') bg-green-200 text-green-800 
+        @elseif($appointment->status == 'rejected') bg-red-200 text-red-800 
+        @else bg-yellow-200 text-yellow-800 @endif">
+                    {{ ucfirst($appointment->status) }}
+                </span>
+            </td>
         </tr>
         @endforeach
     </tbody>

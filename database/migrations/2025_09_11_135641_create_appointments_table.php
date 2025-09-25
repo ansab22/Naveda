@@ -16,10 +16,13 @@ return new class extends Migration
             $table->string('name');
             $table->string('phone');
             $table->string('email');
+            $table->string('status')->default('pending');
             $table->date('date');
             $table->string('service');
+
             $table->text('message')->nullable();
             $table->unsignedBigInteger('user_id')->nullable(); // If logged-in user created it
+
             $table->timestamps();
         });
     }

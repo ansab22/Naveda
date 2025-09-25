@@ -1,6 +1,6 @@
 <!-- resources/views/components/footer.blade.php -->
 <div class="bg-[#cbd9f596] text-gray-800 pt-12 pb-6">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-4">
+    <div class="w-[85%] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-4">
         <!-- Logo and Tagline -->
         <div class="w-full flex flex-col md:flex-row md:justify-between md:items-center pb-8 border-b border-[#bababa] gap-4">
             <img src="/images/logo.png" alt="" class="w-[14%]">

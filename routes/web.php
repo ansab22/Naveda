@@ -63,10 +63,14 @@ Route::middleware(['auth', 'receptionist'])->group(function () {
     Route::get('/receptionist/dashboard', [ReceptionistController::class, 'index'])->name('receptionist.dashboard');
     Route::get('/receptionist/appointments', [AppointmentController::class, 'index'])->name('receptionist.appointments.show');
     Route::get('/receptionist/contact/form', [ContactController::class, 'index'])->name('receptionist.contacts.show');
+    Route::post('/appointments/{appointment}/status', [AppointmentController::class, 'updateStatus'])
+        ->name('appointments.updateStatus');
 });
 Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/user/dashboard', [UserController::class, 'index'])->name('user.dashboard');
     Route::get('/user/appointments', [AppointmentController::class, 'index'])->name('user.appointments');
+    Route::get('/profile', [UserController::class, 'edit'])->name('profile.edit');
+    Route::post('/profile', [UserController::class, 'update'])->name('profile.update');
 });
 Route::post('/appointments', [AppointmentController::class, 'store'])
     ->name('appointments.store');

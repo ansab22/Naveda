@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
+
 class AppointmentController extends Controller
 {
     // Store appointment
@@ -82,5 +83,25 @@ class AppointmentController extends Controller
             $appointments = Appointment::where('user_id', $user->id)->latest()->get();
             return view('user.appointments.index', compact('appointments'));
         }
+    }
+    public function updateStatus(Request $request, Appointment $appointment)
+    {
+        $request->validate([
+            'status' => 'required|in:approved,rejected',
+        ]);
+
+        $appointment->status = $request->status;
+        $appointment->save();
+
+        // Email bhejna
+        Mail::send('emails.appointment_status', [
+            'name' => $appointment->name,
+            'status' => ucfirst($appointment->status),
+        ], function ($message) use ($appointment) {
+            $message->to($appointment->email)
+                ->subject('Your Appointment Status');
+        });
+
+        return back()->with('success', 'Appointment status updated successfully.');
     }
 }

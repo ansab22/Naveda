@@ -11,12 +11,12 @@
 
             {{-- Badge --}}
             <span class="inline-block px-3 lg:px-4 md:px-3 py-1 text-[10px] md:text-[8px] lg:text-[13px] font-medium text-gray-500 bg-[#f5f4f0] rounded-full w-fit">
-                {{ $data['badge'] ?? 'Welcome to Eldera' }}
+                {{ $data['badge'] ?? 'Nevada Nursing' }}
             </span>
 
             {{-- Title --}}
             <h1 class="text-[28px] md:text-[38px] lg:text-6xl text-gray-900 leading-tight">
-                {!! $data['title'] ?? "Leading the Charge<br>in Advanced<br>Nursing Care" !!}
+                {!! $data['title'] ?? "Trusted nursing care <br> for your loved <br> ones." !!}
             </h1>
 
             {{-- Paragraph --}}
