@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'Faqs')
+@section('title', 'Nevada Memory Care | Frequently Asked Questions (FAQs)')
+@section('meta_description', 'Find answers to common questions about Nevada Memory Care services in
+Nevada, including in-home care, assisted living, memory care, hospice & more.')
 
 @section('content')
 

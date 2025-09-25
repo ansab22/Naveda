@@ -86,6 +86,10 @@ class AppointmentController extends Controller
     }
     public function updateStatus(Request $request, Appointment $appointment)
     {
+        if (!in_array(Auth::user()->role, ['admin', 'receptionist'])) {
+            abort(403, 'Unauthorized action.');
+        }
+
         $request->validate([
             'status' => 'required|in:approved,rejected',
         ]);
@@ -93,7 +97,6 @@ class AppointmentController extends Controller
         $appointment->status = $request->status;
         $appointment->save();
 
-        // Email bhejna
         Mail::send('emails.appointment_status', [
             'name' => $appointment->name,
             'status' => ucfirst($appointment->status),

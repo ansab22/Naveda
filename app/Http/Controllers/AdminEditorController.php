@@ -46,6 +46,7 @@ class AdminEditorController extends Controller
 
     public function update(Request $request)
     {
+
         $request->validate([
             'key'   => 'required|string',
             'image' => 'nullable|image|max:4096',

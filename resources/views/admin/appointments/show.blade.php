@@ -61,37 +61,62 @@
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper">
-        <div class="content-header row">
-        </div>
+        <div class="content-header row"></div>
         <h2 class="text-lg font-bold mb-4">Appointments</h2>
 
+        <!-- ✅ Table wrapper with fixed height & vertical scroll -->
         <div class="overflow-x-auto w-full">
-            <table class="table-auto w-full border border-gray-200">
-                <thead class="bg-gray-100">
-                    <tr>
-                        <th class="px-4 py-2 border">Name</th>
-                        <th class="px-4 py-2 border">Phone</th>
-                        <th class="px-4 py-2 border">Email</th>
-                        <th class="px-4 py-2 border">Date</th>
-                        <th class="px-4 py-2 border">Service</th>
-                        <th class="px-4 py-2 border">Message</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($appointments as $appointment)
-                    <tr class="text-center">
-                        <td class="px-4 py-2 border">{{ $appointment->name }}</td>
-                        <td class="px-4 py-2 border">{{ $appointment->phone }}</td>
-                        <td class="px-4 py-2 border">{{ $appointment->email }}</td>
-                        <td class="px-4 py-2 border">{{ $appointment->date }}</td>
-                        <td class="px-4 py-2 border">{{ $appointment->service }}</td>
-                        <td class="px-4 py-2 border">{{ $appointment->message }}</td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+            <div class="max-h-[500px] overflow-y-auto border border-gray-200 rounded-lg">
+                <table class="table-auto w-full">
+                    <thead class="bg-gray-100 sticky top-0 z-10">
+                        <tr>
+                            <th class="px-4 py-2 border">Name</th>
+                            <th class="px-4 py-2 border">Phone</th>
+                            <th class="px-4 py-2 border">Email</th>
+                            <th class="px-4 py-2 border">Date</th>
+                            <th class="px-4 py-2 border">Service</th>
+                            <th class="px-4 py-2 border">Message</th>
+                            <th class="px-4 py-2 border">Status</th>
+                            <th class="px-4 py-2 border">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($appointments as $appointment)
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-4 py-2">{{ $appointment->name }}</td>
+                            <td class="px-4 py-2">{{ $appointment->phone }}</td>
+                            <td class="px-4 py-2">{{ $appointment->email }}</td>
+                            <td class="px-4 py-2">{{ $appointment->date }}</td>
+                            <td class="px-4 py-2">{{ $appointment->service }}</td>
+                            <td class="px-4 py-2">{{ $appointment->message }}</td>
+                            <td class="px-4 py-2">
+                                <span class="px-1 py-1 rounded 
+                                @if($appointment->status == 'approved') bg-green-200 text-green-800
+                                @elseif($appointment->status == 'rejected') bg-red-200 text-red-800 
+                                @else bg-yellow-200 text-yellow-800 @endif">
+                                    {{ ucfirst($appointment->status) }}
+                                </span>
+                            </td>
+                            <td class="px-0 py-2 space-x-5 ">
+                                <form action="{{ route('appointments.updateStatus', $appointment->id) }}" method="POST" class="inline">
+                                    @csrf
+                                    <input type="hidden" name="status" value="approved">
+                                    <button type="submit" class="bg-red-800 text-black px-1 py-1 text-xs">Approve</button>
+                                </form>
+                                <form action="{{ route('appointments.updateStatus', $appointment->id) }}" method="POST" class="inline">
+                                    @csrf
+                                    <input type="hidden" name="status" value="rejected">
+                                    <button type="submit" class="bg-red-500 hover:bg-red-600 text-black px-1 py-1 rounded-md text-xs">Reject</button>
+                                </form>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
+
 </div>
 
 @endsection

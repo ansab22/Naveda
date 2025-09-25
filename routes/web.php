@@ -63,8 +63,6 @@ Route::middleware(['auth', 'receptionist'])->group(function () {
     Route::get('/receptionist/dashboard', [ReceptionistController::class, 'index'])->name('receptionist.dashboard');
     Route::get('/receptionist/appointments', [AppointmentController::class, 'index'])->name('receptionist.appointments.show');
     Route::get('/receptionist/contact/form', [ContactController::class, 'index'])->name('receptionist.contacts.show');
-    Route::post('/appointments/{appointment}/status', [AppointmentController::class, 'updateStatus'])
-        ->name('appointments.updateStatus');
 });
 Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/user/dashboard', [UserController::class, 'index'])->name('user.dashboard');
@@ -77,5 +75,10 @@ Route::post('/appointments', [AppointmentController::class, 'store'])
 
 Route::post('/contact/store', [ContactController::class, 'store'])
     ->name('contact.store');
+// ✅ Shared update status route (accessible for admin + receptionist)
+Route::middleware(['auth'])->group(function () {
+    Route::post('/appointments/{appointment}/status', [AppointmentController::class, 'updateStatus'])
+        ->name('appointments.updateStatus');
+});
 
 require __DIR__ . '/auth.php';

@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'Services')
+@section('title', 'Our Services | Nevada Memory Care & Senior Care Support')
+@section('meta_description', 'Nevada Memory Care services in Nevada, including in-home care, assisted
+living, memory care, hospice care, cardiac care & in-call ambulance support.')
 
 @section('content')
 

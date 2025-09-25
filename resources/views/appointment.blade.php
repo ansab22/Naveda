@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'Appointment')
+@section('title', 'Book an Appointment | Nevada Memory Care Services')
+@section('meta_description', 'Book an appointment with Nevada Memory Care in Nevada. Access expert in-
+home care, assisted living, memory care, hospice, cardiac support & more
+services.')
 
 @section('content')
 

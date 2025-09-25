@@ -17,9 +17,13 @@
                 <div class="text-center sm:text-left">
                     <h3 class="text-lg font-normal mb-2">Explore</h3>
                     <ul class="space-y-1 text-sm">
-                        @foreach (['Home', 'About', 'Services', 'Appointment', 'Blog', 'Team', 'FAQs', 'Contact'] as $item)
-                        <li><a href="#" class="hover:text-black">{{ $item }}</a></li>
-                        @endforeach
+
+                        <li><a href="{{ route('home') }}" class="hover:text-black">Home</a></li>
+                        <li><a href="{{ route('about') }}" class="hover:text-black">About</a></li>
+                        <li><a href="{{ route('services') }}" class="hover:text-black">Services</a></li>
+                        <li><a href="{{ route('appointment') }}" class="hover:text-black">Appointment</a></li>
+                        <li><a href="{{ route('faqs') }}" class="hover:text-black">FAQs</a></li>
+                        <li><a href="{{ route('contact') }}" class="hover:text-black">Contact</a></li>
                     </ul>
                 </div>
 
@@ -39,7 +43,7 @@
                     <p class="text-sm mb-4">7674 Stevie Burg, Raleigh, Wisconsin 38787</p>
                     <h3 class="text-lg font-normal mb-2">Contact</h3>
                     <p class="text-sm">+1 (234) 567 890 00</p>
-                    <p class="text-sm">eldera.info@mail.com</p>
+                    <p class="text-sm">nevada.info@mail.com</p>
                 </div>
             </div>
 
