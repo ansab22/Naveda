@@ -9,53 +9,87 @@
 
     {{-- HERO SECTION --}}
     <section class="mb-10">
-        <h2 class="text-xl font-semibold mb-3">Hero Section</h2>
-        <form method="POST" action="{{ route('admin.home-editor.update') }}" enctype="multipart/form-data" class="space-y-3">
-            @csrf
-            <input type="hidden" name="key" value="home.heroHome">
+    <h2 class="text-xl font-semibold mb-3">Hero Section</h2>
+    <form method="POST" action="{{ route('admin.home-editor.update') }}" enctype="multipart/form-data" class="space-y-4">
+        @csrf
+        <input type="hidden" name="key" value="home.heroHome">
 
-            {{-- Badge --}}
-            <label class="block font-medium">Badge</label>
+        {{-- Badge --}}
+        <div>
+            <label class="block font-medium mb-1">Badge</label>
             <input type="text" name="data[badge]"
                 value="{{ $data['home.heroHome']['badge'] ?? '' }}"
                 class="w-full border p-2 rounded">
+        </div>
 
-            {{-- Title --}}
-            <label class="block font-medium">Title</label>
+        {{-- Title --}}
+        <div>
+            <label class="block font-medium mb-1">Title</label>
             <input type="text" name="data[title]"
                 value="{{ $data['home.heroHome']['title'] ?? '' }}"
                 class="w-full border p-2 rounded">
+        </div>
 
-            {{-- Subtitle --}}
-            <label class="block font-medium">Subtitle</label>
-            <textarea name="data[subtitle]" class="w-full border p-2 rounded">{{ $data['home.heroHome']['subtitle'] ?? '' }}</textarea>
+        {{-- Paragraph --}}
+        <div>
+            <label class="block font-medium mb-1">Paragraph</label>
+            <textarea name="data[paragraph]" class="w-full border p-2 rounded" rows="3">{{ $data['home.heroHome']['paragraph'] ?? '' }}</textarea>
+        </div>
 
-            {{-- Button text --}}
-            <label class="block font-medium">Button text</label>
+        {{-- Features --}}
+        <div class="border-t pt-4">
+            <label class="block font-medium mb-3">Features</label>
+            <div id="features-container" class="space-y-2 mb-3">
+                @php
+                    $features = $data['home.heroHome']['features'] ?? ['Professional Doctors', 'Compassionate Care', 'Safe & Supportive Environment'];
+                @endphp
+
+                @foreach($features as $index => $feature)
+                <div class="flex gap-2">
+                    <input type="text" name="data[features][]"
+                        value="{{ $feature }}"
+                        placeholder="Feature {{ $index + 1 }}"
+                        class="flex-1 border p-2 rounded">
+                </div>
+                @endforeach
+            </div>
+        </div>
+
+        {{-- Button text --}}
+        <div>
+            <label class="block font-medium mb-1">Button Text</label>
             <input type="text" name="data[button_text]"
                 value="{{ $data['home.heroHome']['button_text'] ?? '' }}"
                 class="w-full border p-2 rounded">
+        </div>
 
-            {{-- Button link --}}
-            <label class="block font-medium">Button link</label>
+        {{-- Button link --}}
+        <div>
+            <label class="block font-medium mb-1">Button Link</label>
             <input type="text" name="data[button_link]"
                 value="{{ $data['home.heroHome']['button_link'] ?? '' }}"
                 class="w-full border p-2 rounded">
+        </div>
 
-            {{-- Overlay title --}}
-            <label class="block font-medium">Overlay Title</label>
+        {{-- Overlay title --}}
+        <div>
+            <label class="block font-medium mb-1">Overlay Title</label>
             <input type="text" name="data[overlay_title]"
                 value="{{ $data['home.heroHome']['overlay_title'] ?? '' }}"
                 class="w-full border p-2 rounded">
+        </div>
 
-            {{-- Overlay subtitle --}}
-            <label class="block font-medium">Overlay Subtitle</label>
+        {{-- Overlay subtitle --}}
+        <div>
+            <label class="block font-medium mb-1">Overlay Subtitle</label>
             <input type="text" name="data[overlay_subtitle]"
                 value="{{ $data['home.heroHome']['overlay_subtitle'] ?? '' }}"
                 class="w-full border p-2 rounded">
+        </div>
 
-            {{-- Image --}}
-            <label class="block font-medium">Hero Image</label>
+        {{-- Image --}}
+        <div>
+            <label class="block font-medium mb-1">Hero Image</label>
             <input type="file" name="image" class="w-full border p-2 rounded">
             @if(!empty($data['home.heroHome']['image']))
             <div class="mt-2">
@@ -63,13 +97,13 @@
                     alt="hero" style="max-width:250px" class="rounded shadow">
             </div>
             @endif
+        </div>
 
-            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">
-                Save Hero Section
-            </button>
-        </form>
-
-    </section>
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+            Save Hero Section
+        </button>
+    </form>
+</section>
 
     {{-- VIDEO SECTION --}}
     <section class="mb-10">

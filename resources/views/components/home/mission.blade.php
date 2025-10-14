@@ -20,18 +20,19 @@ asset('images/img-3.jpg'),
                 {!! $mission['heading'] ?? "Empowering Care for the Heart and Soul" !!}
             </h1>
             <p class="mt-4 text-gray-600 text-xs sm:text-sm lg:text-base text-center">
-                {!! $mission['description'] ?? "Lorem ipsum dolor sit amet, consectetur adipiscing elit..." !!}
+                {!! $mission['description'] ?? "Compassionate support nurturing heart, soul, and wellbeing." !!}
             </p>
         </div>
     </div>
 
     <!-- List Section -->
-    <div class="mt-12 w-full sm:w-[90%] md:w-[70%] lg:w-[55%] mx-auto px-4 space-y-10">
+    <div class="mt-12 w-full sm:w-[90%] md:w-[70%] lg:w-[63%] mx-auto px-4 space-y-10">
         @php
         $items = $mission['items'] ?? [
-        ["title" => "Improving lives through dedication and skill", "image" => null],
-        ["title" => "Excellence in nursing, every step of the way", "image" => null],
-        ["title" => "Inspired by elegance, driven by compassion", "image" => null],
+        ["title" => "Providing compassionate care that enhances every moment", "image" => null],
+        ["title" => "Commitment to excellence in memory and senior care", "image" => null],
+        ["title" => "Guided by empathy, dedicated to lasting well-being
+", "image" => null],
         ];
         @endphp
 

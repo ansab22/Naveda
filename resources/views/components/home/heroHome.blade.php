@@ -11,17 +11,18 @@
 
             {{-- Badge --}}
             <span class="inline-block px-3 lg:px-4 md:px-3 py-1 text-[10px] md:text-[8px] lg:text-[13px] font-medium text-gray-500 bg-[#f5f4f0] rounded-full w-fit">
-                {{ $data['badge'] ?? 'Nevada Nursing' }}
+                {{ $data['badge'] ?? 'Nursing Home' }}
             </span>
 
             {{-- Title --}}
             <h1 class="text-[28px] md:text-[38px] lg:text-6xl text-gray-900 leading-tight">
-                {!! $data['title'] ?? "Trusted nursing care <br> for your loved <br> ones." !!}
+                {!! $data['title'] ?? "Nevada Memory Care" !!}
             </h1>
 
             {{-- Paragraph --}}
             <p class="text-gray-600 text-[10px] md:text-xs lg:text-base">
-                {!! $data['paragraph'] ?? "Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br> Ut elit tellus luctus nec mattis, pulvinar." !!}
+                {!! $data['paragraph'] ?? "Nevada Memory Care offers compassionate, 24/7 support for seniors with Alzheimer’s and dementia in a safe, engaging, and nurturing environment.
+" !!}
             </p>
 
             {{-- Button & Text --}}
@@ -46,10 +47,10 @@
                     <i class="fa-solid fa-circle-check text-green-300"></i> Professional Doctors
                 </div>
                 <div class="flex items-center gap-2 text-[10px] lg:text-sm font-semibold text-gray-800">
-                    <i class="fa-solid fa-circle-check text-green-300"></i> Professional Doctors
+                    <i class="fa-solid fa-circle-check text-green-300"></i> Compassionate Care
                 </div>
                 <div class="flex items-center gap-2 text-[10px] lg:text-sm font-semibold text-gray-800">
-                    <i class="fa-solid fa-circle-check text-green-300"></i> Professional Doctors
+                    <i class="fa-solid fa-circle-check text-green-300"></i> Safe & Supportive Environment
                 </div>
                 @endif
             </div>

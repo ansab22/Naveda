@@ -2,10 +2,11 @@
 use App\Models\Content;
 $data = Content::getData('home.experience');
 $items = $data['items'] ?? [
-["number" => 35, "suffix" => "+", "title" => "Years of Experience", "desc" => "Lorem ipsum dolor sit amet, consec tetur adipiscing."],
-["number" => 140, "suffix" => "", "title" => "Professional Staffs", "desc" => "Lorem ipsum dolor sit amet, consec tetur adipiscing."],
-["number" => 6.2, "suffix" => "K+", "title" => "Happy Patients", "desc" => "Lorem ipsum dolor sit amet, consec tetur adipiscing."],
-["number" => 99.9, "suffix" => "%", "title" => "Positive Reviews", "desc" => "Lorem ipsum dolor sit amet, consec tetur adipiscing."],
+["number" => 35, "suffix" => "+", "title" => "Years of Experience", "desc" => "Delivering trusted care and compassionate service for over three decades."],
+["number" => 140, "suffix" => "", "title" => "Professional Staffs", "desc" => "A dedicated team of skilled and compassionate healthcare experts."],
+["number" => 6.2, "suffix" => "K+", "title" => "Happy Patients", "desc" => "Enhancing lives through personalized attention and heartfelt care."],
+["number" => 99.9, "suffix" => "%", "title" => "Positive Reviews", "desc" => "Consistently exceeding expectations with quality and trust.
+"],
 ];
 @endphp
 
