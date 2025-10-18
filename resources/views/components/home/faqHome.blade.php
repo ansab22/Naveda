@@ -8,8 +8,8 @@ $defaultFaq = [
 'badge' => 'FAQs',
 'heading' => 'Frequently Asked Questions',
 'image' => 'images/faq.jpg',
-'phone' => '+1 (234) 567 890 00',
-'email' => 'eldera@mails.com',
+'phone' => '+1 (702)-805-5567',
+'email' => 'info@nvmemorycare.com',
 'faqs' => [
 [
 'question' => 'How long has your company been established?',
@@ -98,7 +98,7 @@ $imageSrc = asset($imagePath);
                     {{ $faq['heading'] }}
                 </h1>
             </div>
-            <div class="max-w-2xl mx-auto space-y-2">
+            <div class="space-y-2">
 
                 @foreach($faqs as $index => $faqItem)
                 <!-- Accordion Item {{ $index + 1 }} -->

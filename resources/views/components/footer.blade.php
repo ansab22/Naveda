@@ -40,10 +40,10 @@
                 <!-- Address & Contact -->
                 <div class="text-center sm:text-left">
                     <h3 class="text-lg font-normal mb-2">Address</h3>
-                    <p class="text-sm mb-4">7674 Stevie Burg, Raleigh, Wisconsin 38787</p>
+                    <p class="text-sm mb-4">2299 Montessouri Street Las Vegas, NV 89117</p>
                     <h3 class="text-lg font-normal mb-2">Contact</h3>
-                    <p class="text-sm">+1 (234) 567 890 00</p>
-                    <p class="text-sm">nevada.info@mail.com</p>
+                    <p class="text-sm">+1 (702)-805-5567</p>
+                    <p class="text-sm">info@nvmemorycare.com</p>
                 </div>
             </div>
 
