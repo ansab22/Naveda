@@ -40,10 +40,10 @@
                 <!-- Address & Contact -->
                 <div class="text-center sm:text-left">
                     <h3 class="text-lg font-normal mb-2">Address</h3>
-                    <p class="text-sm mb-4">2299 Montessouri Street Las Vegas, NV 89117</p>
+                    <a href="https://www.google.com/maps?q=2299+Montessouri+Street+Las+Vegas,+NV+89117" ><p class="text-sm mb-4">2299 Montessouri Street Las Vegas, NV 89117</p></a>
                     <h3 class="text-lg font-normal mb-2">Contact</h3>
-                    <p class="text-sm">+1 (702)-805-5567</p>
-                    <p class="text-sm">info@nvmemorycare.com</p>
+                    <a href="tel:+17028055567" ><p class="text-sm">+1 (702)-805-5567</p></a>
+                    <a href="mailto:info@nvmemorycare.com"><p class="text-sm">info@nvmemorycare.com</p></a>
                 </div>
             </div>
 
@@ -75,8 +75,6 @@
         <div class="flex flex-col md:flex-row justify-between items-center mt-10 text-sm text-gray-500 gap-2">
             <p class="text-xs text-black text-center md:text-left">Copyright © {{ now()->year }} ASK Project</p>
             <div class="space-x-4">
-                <a href="#" class="text-xs text-black">Privacy Policy</a>
-                <a href="#" class="text-xs text-black">Terms & Services</a>
             </div>
         </div>
     </div>

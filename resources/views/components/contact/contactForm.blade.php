@@ -15,16 +15,16 @@
             <div class="flex flex-col gap-2 lg:gap-6">
                 <div class="flex gap-3 w-full items-center">
                     <i class="fa-solid fa-location-dot text-[12px] lg:text-[22px] text-[#c4cffa]  cursor-pointer"></i>
-                    <h3 class="text-[12px] lg:text-[19px] cursor-pointer">7674 Stevie Burg, Raleigh
-                        Wisconsin 38787</h3>
+                   <a href="https://www.google.com/maps?q=2299+Montessouri+Street+Las+Vegas,+NV+89117" > <h3 class="text-[12px] lg:text-[19px] cursor-pointer">2299 Montessouri Street Las Vegas, NV 89117
+                        </h3></a>
                 </div>
                 <div class="flex gap-3 w-full items-center">
                     <i class="fa-solid fa-phone-volume text-[12px] lg:text-[22px] text-[#c4cffa]  cursor-pointer"></i>
-                    <h3 class="text-[12px] lg:text-[19px] cursor-pointer">+1 (234) 567 890 00</h3>
+                   <a href="tel:+17028055567" > <h3 class="text-[12px] lg:text-[19px] cursor-pointer">+1 (702)-805-5567</h3></a>
                 </div>
                 <div class="flex gap-3 w-full items-center">
                     <i class="fa-solid fa-envelope text-[12px] lg:text-[22px] text-[#c4cffa]  cursor-pointer"></i>
-                    <h3 class="text-[12px] lg:text-[19px] cursor-pointer">nevada@info.com</h3>
+                    <a href="mailto:info@nvmemorycare.com"><h3 class="text-[12px] lg:text-[19px] cursor-pointer">info@nvmemorycare.com</h3></a>
                 </div>
             </div>
         </div>
