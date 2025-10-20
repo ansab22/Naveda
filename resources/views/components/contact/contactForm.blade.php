@@ -1,3 +1,25 @@
+@php
+    $contact = \App\Models\Content::getData('contact.info');
+    $badge = $contact['badge'] ?? 'Get in Touch';
+    $heading = $contact['heading'] ?? 'Send Us a Message';
+    $items = $contact['items'] ?? [
+        [
+            'icon' => 'fa-solid fa-location-dot',
+            'text' => '2299 Montessouri Street Las Vegas, NV 89117',
+            'link' => 'https://www.google.com/maps?q=2299+Montessouri+Street+Las+Vegas,+NV+89117'
+        ],
+        [
+            'icon' => 'fa-solid fa-phone-volume',
+            'text' => '+1 (702)-805-5567',
+            'link' => 'tel:+17028055567'
+        ],
+        [
+            'icon' => 'fa-solid fa-envelope',
+            'text' => 'info@nvmemorycare.com',
+            'link' => 'mailto:info@nvmemorycare.com'
+        ],
+    ];
+@endphp
 <div class="mt-8 lg:mt-16 mb-12">
     <!-- Responsive grid with two columns -->
     <div class="grid grid-cols-1 lg:grid-cols-2  gap-6 lg:gap-10">
@@ -6,26 +28,25 @@
         <div class="flex flex-col gap-0 sm:gap-6 lg:justify-between items-start ">
             <div class="flex flex-col gap-4 sm:gap-6 justify-center items-start mb-8">
                 <span class="inline-block px-3 lg:px-4 md:px-3 py-1 text-[10px] md:text-[8px] lg:text-[13px] font-medium text-gray-500 bg-[#f5f4f0] rounded-full w-fit">
-                    Get in Touch
+                    {{ $badge }}
                 </span>
                 <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-gray-900 leading-tight">
-                    Send Us a Message
+                    {{ $heading }}
                 </h1>
             </div>
             <div class="flex flex-col gap-2 lg:gap-6">
-                <div class="flex gap-3 w-full items-center">
-                    <i class="fa-solid fa-location-dot text-[12px] lg:text-[22px] text-[#c4cffa]  cursor-pointer"></i>
-                   <a href="https://www.google.com/maps?q=2299+Montessouri+Street+Las+Vegas,+NV+89117" > <h3 class="text-[12px] lg:text-[19px] cursor-pointer">2299 Montessouri Street Las Vegas, NV 89117
-                        </h3></a>
-                </div>
-                <div class="flex gap-3 w-full items-center">
-                    <i class="fa-solid fa-phone-volume text-[12px] lg:text-[22px] text-[#c4cffa]  cursor-pointer"></i>
-                   <a href="tel:+17028055567" > <h3 class="text-[12px] lg:text-[19px] cursor-pointer">+1 (702)-805-5567</h3></a>
-                </div>
-                <div class="flex gap-3 w-full items-center">
-                    <i class="fa-solid fa-envelope text-[12px] lg:text-[22px] text-[#c4cffa]  cursor-pointer"></i>
-                    <a href="mailto:info@nvmemorycare.com"><h3 class="text-[12px] lg:text-[19px] cursor-pointer">info@nvmemorycare.com</h3></a>
-                </div>
+                @foreach($items as $item)
+                    <div class="flex gap-3 w-full items-center">
+                        <i class="{{ $item['icon'] ?? '' }} text-[12px] lg:text-[22px] text-[#c4cffa] cursor-pointer"></i>
+                        @if(!empty($item['link']))
+                            <a href="{{ $item['link'] }}" target="_blank">
+                                <h3 class="text-[12px] lg:text-[19px] cursor-pointer">{{ $item['text'] }}</h3>
+                            </a>
+                        @else
+                            <h3 class="text-[12px] lg:text-[19px]">{{ $item['text'] }}</h3>
+                        @endif
+                    </div>
+                @endforeach
             </div>
         </div>
 

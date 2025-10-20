@@ -1275,6 +1275,102 @@
             </button>
     </form>
 </section>
+{{-- CONTACT INFO SECTION --}}
+<section class="mb-10">
+    <h2 class="text-xl font-semibold mb-3">Contact Information Section</h2>
+    <form method="POST" action="{{ route('admin.home-editor.update') }}" class="space-y-6">
+        @csrf
+        <input type="hidden" name="key" value="contact.info">
+
+        {{-- Header Content --}}
+        <div class="p-4 border rounded bg-gray-50 space-y-3">
+            <h3 class="font-semibold text-lg">Header Section</h3>
+
+            <label class="block font-medium">Badge Text</label>
+            <input type="text" name="data[badge]"
+                value="{{ $data['contact.info']['badge'] ?? 'Get in Touch' }}"
+                class="w-full border p-2 rounded"
+                placeholder="Get in Touch">
+
+            <label class="block font-medium">Main Heading</label>
+            <input type="text" name="data[heading]"
+                value="{{ $data['contact.info']['heading'] ?? 'Send Us a Message' }}"
+                class="w-full border p-2 rounded"
+                placeholder="Send Us a Message">
+        </div>
+
+        {{-- Contact Items --}}
+        @php
+        $contactItems = $data['contact.info']['items'] ?? [
+            [
+                'icon' => 'fa-solid fa-location-dot',
+                'text' => '2299 Montessouri Street Las Vegas, NV 89117',
+                'link' => 'https://www.google.com/maps?q=2299+Montessouri+Street+Las+Vegas,+NV+89117'
+            ],
+            [
+                'icon' => 'fa-solid fa-phone-volume',
+                'text' => '+1 (702)-805-5567',
+                'link' => 'tel:+17028055567'
+            ],
+            [
+                'icon' => 'fa-solid fa-envelope',
+                'text' => 'info@nvmemorycare.com',
+                'link' => 'mailto:info@nvmemorycare.com'
+            ],
+        ];
+        $itemTitles = ['Address', 'Phone Number', 'Email'];
+        @endphp
+
+        <div class="space-y-4">
+            <h3 class="text-lg font-semibold">Contact Details</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                @foreach($contactItems as $index => $item)
+                <div class="p-4 border rounded bg-gray-50 space-y-3">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="{{ $item['icon'] ?? '' }} text-lg text-indigo-600"></i>
+                        <h4 class="font-semibold">{{ $itemTitles[$index] }}</h4>
+                    </div>
+
+                    {{-- Display Text --}}
+                    <label class="block text-sm font-medium">Display Text</label>
+                    <input type="text" name="data[items][{{ $index }}][text]"
+                        value="{{ $item['text'] ?? '' }}"
+                        class="w-full border p-2 rounded text-sm"
+                        placeholder="{{ $itemTitles[$index] }}">
+
+                    {{-- Link (Auto for phone/email) --}}
+                    <label class="block text-sm font-medium">
+                        Link 
+                        @if($index === 1)
+                            <span class="text-xs text-gray-500">(Auto tel: link for phone)</span>
+                        @endif
+                    </label>
+                    <input type="text" name="data[items][{{ $index }}][link]"
+                        value="{{ $item['link'] ?? '' }}"
+                        class="w-full border p-2 rounded text-sm"
+                        placeholder="{{ $index === 0 ? 'Google Maps URL' : ($index === 1 ? 'tel:+1234567890' : 'mailto:email@example.com') }}">
+
+                    <small class="text-xs text-gray-500 block mt-1">
+                        @if($index === 0)
+                            For Google Maps: Use full maps.google.com URL
+                        @elseif($index === 1)
+                            Phone will auto-format to tel: link (clickable dialer)
+                        @else
+                            Email will link to mailto: (clickable email)
+                        @endif
+                    </small>
+                </div>
+                @endforeach
+            </div>
+        </div>
+
+        <div class="pt-4">
+            <button type="submit" class="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors">
+                Save Contact Information
+            </button>
+        </div>
+    </form>
+</section>
 
 
 {{-- Google Map Section --}}

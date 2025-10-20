@@ -13,7 +13,7 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/about', function () {
+Route::get('/about-us', function () {
     return view('about');
 })->name('about');
 
@@ -33,7 +33,7 @@ Route::get('/faqs', function () {
     return view('faq');
 })->name('faqs');
 
-Route::get('/contact', function () {
+Route::get('/contact-us', function () {
     return view('contact');
 })->name('contact');
 

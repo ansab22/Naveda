@@ -30,7 +30,8 @@ class AdminEditorController extends Controller
             'faq.aboutPayment',
             'faq.otherQuestions',
             'home.pricing',
-            'home.map'
+            'home.map',
+            'contact.info'
         ];
 
 
@@ -362,6 +363,65 @@ class AdminEditorController extends Controller
                 $data['items'] = $defaultItems;
             }
         }
+       if ($key === 'contact.info') {
+    $existing = Content::getData($key);
+
+    // Default values
+    $defaults = [
+        'badge' => 'Get in Touch',
+        'heading' => 'Send Us a Message',
+        'items' => [
+            [
+                'icon' => 'fa-solid fa-location-dot',
+                'text' => '2299 Montessouri Street Las Vegas, NV 89117',
+                'link' => 'https://www.google.com/maps?q=2299+Montessouri+Street+Las+Vegas,+NV+89117'
+            ],
+            [
+                'icon' => 'fa-solid fa-phone-volume',
+                'text' => '+1 (702)-805-5567',
+                'link' => 'tel:+17028055567'
+            ],
+            [
+                'icon' => 'fa-solid fa-envelope',
+                'text' => 'info@nvmemorycare.com',
+                'link' => 'mailto:info@nvmemorycare.com'
+            ],
+        ]
+    ];
+
+    // Preserve existing or use defaults
+    $data['badge'] = !empty($data['badge']) ? $data['badge'] : ($existing['badge'] ?? $defaults['badge']);
+    $data['heading'] = !empty($data['heading']) ? $data['heading'] : ($existing['heading'] ?? $defaults['heading']);
+
+    // Handle items - merge with existing, preserve icons
+    if (!empty($data['items']) && is_array($data['items'])) {
+        foreach ($data['items'] as $i => $item) {
+            // Always preserve icon from existing or default
+            $data['items'][$i]['icon'] = $existing['items'][$i]['icon'] ?? $defaults['items'][$i]['icon'] ?? '';
+            
+            // Only update text if provided, else keep existing or default
+            if (empty($item['text'])) {
+                $data['items'][$i]['text'] = $existing['items'][$i]['text'] ?? $defaults['items'][$i]['text'] ?? '';
+            }
+            
+            // Only update link if provided, else keep existing or default
+            if (empty($item['link'])) {
+                $data['items'][$i]['link'] = $existing['items'][$i]['link'] ?? $defaults['items'][$i]['link'] ?? '';
+            }
+            
+            // Auto-format phone link
+            if (isset($data['items'][$i]['text']) && preg_match('/^\+?\d[\d\s\(\)\-]+$/', $data['items'][$i]['text'])) {
+                $phone = preg_replace('/[^\d+]/', '', $data['items'][$i]['text']);
+                if (!str_starts_with($data['items'][$i]['link'], 'tel:')) {
+                    $data['items'][$i]['link'] = 'tel:' . $phone;
+                }
+            }
+        }
+    } else {
+        $data['items'] = $existing['items'] ?? $defaults['items'];
+    }
+}
+
 
 
 
