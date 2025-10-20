@@ -127,7 +127,7 @@ $members = $team['members'] ?? $defaultTeam['members'];
                         {{ $member['position'] ?? 'Staff Member' }}
                     </p>
 
-                    <div class="flex gap-3 sm:gap-4">
+                    <!-- <div class="flex gap-3 sm:gap-4">
 
                         <a href="{{ $member['facebook'] }}" target="_blank"
                             class="text-[12px] sm:text-[14px] text-[#c4cffa] hover:text-black cursor-pointer transition-colors">
@@ -148,7 +148,7 @@ $members = $team['members'] ?? $defaultTeam['members'];
                             <i class="fa-solid fa-phone"></i>
                         </a>
 
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

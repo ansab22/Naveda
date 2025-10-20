@@ -28,19 +28,30 @@
                 </div>
 
                 <!-- Socials -->
-                <div class="text-center sm:text-left">
-                    <h3 class="text-lg font-normal mb-2">Socials</h3>
-                    <ul class="space-y-1 text-sm">
-                        @foreach (['Instagram', 'Facebook', 'Youtube', 'LinkedIn'] as $social)
-                        <li><a href="#" class="hover:text-black">{{ $social }}</a></li>
-                        @endforeach
-                    </ul>
-                </div>
+                              <!-- Socials -->
+<div class="text-center sm:text-left">
+    <h3 class="text-lg font-normal mb-2">Socials</h3>
+    <ul class="space-y-1 text-sm">
+        @foreach ([
+            'Instagram' => 'https://www.instagram.com/nevadamemorycare1/',
+            'Facebook' => 'https://www.facebook.com/yourpage',
+            'YouTube' => 'https://www.youtube.com/@NVMemoryCare',
+            'Yelp' => 'https://www.yelp.com/biz/nevada-memory-care-las-vegas-3',
+            'LinkedIn' => 'https://www.linkedin.com/company/nevada-memory-care',
+        ] as $social => $link)
+            <li>
+                <a href="{{ $link }}" target="_blank" rel="noopener noreferrer" class="hover:text-black">
+                    {{ $social }}
+                </a>
+            </li>
+        @endforeach
+    </ul>
+</div>
 
                 <!-- Address & Contact -->
                 <div class="text-center sm:text-left">
                     <h3 class="text-lg font-normal mb-2">Address</h3>
-                    <a href="https://www.google.com/maps?q=2299+Montessouri+Street+Las+Vegas,+NV+89117" ><p class="text-sm mb-4">2299 Montessouri Street Las Vegas, NV 89117</p></a>
+                    <a href="https://maps.app.goo.gl/dSPAFgVELbD283cW6" ><p class="text-sm mb-4">2299 Montessouri Street Las Vegas, NV 89117</p></a>
                     <h3 class="text-lg font-normal mb-2">Contact</h3>
                     <a href="tel:+17028055567" ><p class="text-sm">+1 (702)-805-5567</p></a>
                     <a href="mailto:info@nvmemorycare.com"><p class="text-sm">info@nvmemorycare.com</p></a>
@@ -73,7 +84,7 @@
 
         <!-- Footer Bottom -->
         <div class="flex flex-col md:flex-row justify-between items-center mt-10 text-sm text-gray-500 gap-2">
-            <p class="text-xs text-black text-center md:text-left">Copyright © {{ now()->year }} ASK Project</p>
+            <p class="text-xs text-black text-center md:text-left">Copyright © {{ now()->year }} <a href="https://trisagesolutions.com/">Trisage Solutions</p></a>
             <div class="space-x-4">
             </div>
         </div>
