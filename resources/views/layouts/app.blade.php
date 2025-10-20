@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@100;200;300;400;500;600;700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+    
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('styles')
