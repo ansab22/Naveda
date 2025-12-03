@@ -78,11 +78,11 @@ $imageSrc = asset($imagePath);
             <div
                 class="absolute bottom-3 left-6 bg-white shadow-md rounded-2xl flex flex-col items-start space-y-4 lg:space-y-6 px-4 lg:px-8 py-8 w-[80%] md:w-[30%] lg:w-[55%]">
                 <div class="flex gap-3 w-full items-center">
-                    <i class="fa-solid fa-phone-volume text-[12px] lg:text-[22px] text-[#e0e6ff] cursor-pointer"></i>
+                    <i class="fa-solid fa-phone-volume text-[12px] lg:text-[22px] text-[#c2cdf9] cursor-pointer"></i>
                     <h3 class="text-[12px] lg:text-[19px] cursor-pointer">{{ $faq['phone'] }}</h3>
                 </div>
                 <div class="flex gap-3 w-full items-center">
-                    <i class="fa-regular fa-envelope text-[12px] lg:text-[22px] text-[#e0e6ff] cursor-pointer"></i>
+                    <i class="fa-solid fa-envelope text-[12px] lg:text-[22px] text-[#c2cdf9] cursor-pointer"></i>
                     <h3 class="text-[12px] lg:text-[19px] cursor-pointer">{{ $faq['email'] }}</h3>
                 </div>
             </div>

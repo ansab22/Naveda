@@ -14,4 +14,8 @@ Nevada, including in-home care, assisted living, memory care, hospice & more.')
     <x-faq.faqsAll />
 </div>
 
+    <div class="bg-white pb-12 w-[85%] mx-auto">
+        <x-home.appointmentHome />
+    </div>
+
 @endsection

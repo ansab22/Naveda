@@ -17,13 +17,15 @@ class AppointmentController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name'    => 'required|string|max:255',
-            'phone'   => 'required|string|max:20',
-            'email'   => 'required|email',
-            'date'    => 'required|date',
-            'service' => 'required|string',
+            'name' => 'required|string|max:255',
+            'phone' => 'required|string|max:20',
+            'email' => 'required|email',
+            'inquiring_about' => 'required|string',
+            'time_frame' => 'nullable|string',
+            'financial_option' => 'nullable|string',
             'message' => 'nullable|string',
         ]);
+
 
         // Check if user already exists
         $user = User::where('email', $validated['email'])->first();
@@ -56,10 +58,12 @@ class AppointmentController extends Controller
             'name' => $validated['name'],
             'phone' => $validated['phone'],
             'email' => $validated['email'],
-            'date' => $validated['date'],
-            'service' => $validated['service'],
+            'inquiring_about' => $validated['inquiring_about'],
+            'time_frame' => $validated['time_frame'],
+            'financial_option' => $validated['financial_option'],
             'message' => $validated['message'],
         ]);
+
 
         return back()->with('success', 'Your appointment has been booked! Please check your email for login details.');
     }

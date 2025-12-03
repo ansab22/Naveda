@@ -36,6 +36,9 @@ Route::get('/faqs', function () {
 Route::get('/contact-us', function () {
     return view('contact');
 })->name('contact');
+Route::get('/gallery', function () {
+    return view('gallery');
+})->name('gallery');
 
 
 

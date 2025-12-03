@@ -20,14 +20,14 @@
             </h1>
 
             {{-- Paragraph --}}
-            <p class="text-gray-600 text-[10px] md:text-xs lg:text-base">
+            <p class="text-gray-600 text-[10px] md:text-xs lg:text-xl">
                 {!! $data['paragraph'] ?? "Nevada Memory Care offers compassionate, 24/7 support for seniors with Alzheimer’s and dementia in a safe, engaging, and nurturing environment.
 " !!}
             </p>
 
             {{-- Button & Text --}}
             <div class="flex flex-col sm:flex-row sm:items-center gap-4">
-                <a href="{{ $data['button_link'] ?? '#' }}"
+                <a href="{{ $data['button_link'] ?? route('contact') }}"
                     class="px-4 py-2 md:px-6 md:py-3 rounded-full bg-indigo-100 font-medium hover:bg-[#f5f4f0] text-[10px] lg:text-sm transition-colors duration-700 ease-in-out w-fit">
                     {{ $data['button_text'] ?? 'Get In Touch' }}
                 </a>

@@ -19,7 +19,7 @@ care, hospice, cardiac care & in-call ambulance services across Nevada.')
 </div>
 <x-home.startedHome />
 <div class="bg-white py-12 w-[85%] mx-auto">
-    <x-home.teamHome />
+    {{-- <x-home.teamHome /> --}}
     <x-home.faqHome />
 </div>
 @endsection

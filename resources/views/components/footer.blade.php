@@ -2,7 +2,8 @@
 <div class="bg-[#cbd9f596] text-gray-800 pt-12 pb-6">
     <div class="w-[85%] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-4">
         <!-- Logo and Tagline -->
-        <div class="w-full flex flex-col md:flex-row md:justify-between md:items-center pb-8 border-b border-[#bababa] gap-4">
+        <div
+            class="w-full flex flex-col md:flex-row md:justify-between md:items-center pb-8 border-b border-[#bababa] gap-4">
             <img src="/images/logo.png" alt="" class="w-[14%]">
             <h3 class="text-[16px] md:text-[18px] text-center md:text-right">
                 Transforming healthcare through <br class="hidden md:block"> timeless elegance!
@@ -12,7 +13,7 @@
         <!-- Main Content -->
         <div class="flex flex-col lg:flex-row pb-8 border-b border-[#bababa] mt-5 sm:mt-10 gap-10">
             <!-- Left Section: Links + Address -->
-            <div class="flex flex-col sm:flex-row flex-wrap lg:w-[70%] gap-10 sm:gap-16">
+            <div class="flex flex-col sm:flex-row flex-wrap sm:justify-between jus lg:w-[100%] gap-10 sm:gap-16">
                 <!-- Explore -->
                 <div class="text-center sm:text-left">
                     <h3 class="text-lg font-normal mb-2">Explore</h3>
@@ -31,31 +32,48 @@
                 <div class="text-center sm:text-left">
                     <h3 class="text-lg font-normal mb-2">Socials</h3>
                     <ul class="space-y-1 text-sm">
-                        @foreach (['Instagram', 'Facebook', 'Youtube', 'LinkedIn'] as $social)
-                        <li><a href="#" class="hover:text-black">{{ $social }}</a></li>
+                        @foreach ([
+                                    'Instagram' => 'https://www.instagram.com/nevadamemorycare1/',
+                                    'YouTube' => 'https://www.youtube.com/@NVMemoryCare',
+                                    'Yelp' => 'https://www.yelp.com/biz/nevada-memory-care-las-vegas-3',
+                                    'LinkedIn' => 'https://www.linkedin.com/company/nevada-memory-care',
+                                ] as $social => $link)
+                            <li>
+                                <a href="{{ $link }}" target="_blank" rel="noopener noreferrer"
+                                    class="hover:text-black">
+                                    {{ $social }}
+                                </a>
+                            </li>
                         @endforeach
                     </ul>
                 </div>
 
+
                 <!-- Address & Contact -->
                 <div class="text-center sm:text-left">
                     <h3 class="text-lg font-normal mb-2">Address</h3>
-                    <a href="https://www.google.com/maps?q=2299+Montessouri+Street+Las+Vegas,+NV+89117" ><p class="text-sm mb-4">2299 Montessouri Street Las Vegas, NV 89117</p></a>
+                    <a href="https://maps.app.goo.gl/dSPAFgVELbD283cW6">
+                        <p class="text-sm mb-4">2299 Montessouri Street Las Vegas, NV 89117</p>
+                    </a>
                     <h3 class="text-lg font-normal mb-2">Contact</h3>
-                    <a href="tel:+17028055567" ><p class="text-sm">+1 (702)-805-5567</p></a>
-                    <a href="mailto:info@nvmemorycare.com"><p class="text-sm">info@nvmemorycare.com</p></a>
+                    <a href="tel:+17028055567">
+                        <p class="text-sm">+1 (702)-805-5567</p>
+                    </a>
+                    <a href="mailto:info@nvmemorycare.com">
+                        <p class="text-sm">info@nvmemorycare.com</p>
+                    </a>
                 </div>
             </div>
 
             <!-- Right Section: Newsletter -->
-            <div class="lg:w-[30%] flex justify-center lg:justify-end">
+            {{-- <div class="lg:w-[30%] flex justify-center lg:justify-end">
                 <div class="bg-[#f6f6f6] p-6 rounded-lg shadow-md w-full sm:w-[80%] lg:w-full">
                     <h3 class="text-lg font-light mb-4">Join our newsletter</h3>
                     <form>
                         <div class="mb-4">
                             <label class="block text-sm font-normal mb-1" for="name">Your Name *</label>
                             <input type="text" id="name" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                                placeholder="John Doe">
+                                placeholder="Name">
                         </div>
                         <div class="mb-4">
                             <label class="block text-sm font-normal mb-1" for="email">Email *</label>
@@ -68,12 +86,13 @@
                         </button>
                     </form>
                 </div>
-            </div>
+            </div> --}}
         </div>
 
         <!-- Footer Bottom -->
         <div class="flex flex-col md:flex-row justify-between items-center mt-10 text-sm text-gray-500 gap-2">
-            <p class="text-xs text-black text-center md:text-left">Copyright © {{ now()->year }} ASK Project</p>
+            <p class="text-xs text-black text-center md:text-left">Copyright © {{ now()->year }} <a
+                    href="https://trisagesolutions.com/">Trisage Solutions</p></a>
             <div class="space-x-4">
             </div>
         </div>

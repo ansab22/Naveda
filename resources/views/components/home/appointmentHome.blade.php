@@ -49,21 +49,55 @@
                 </div>
 
                 <!-- Date + Service -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div class="flex flex-col gap-2">
+                <div class="grid grid-cols-1 sm:grid-cols-1 gap-4">
+                    {{-- <div class="flex flex-col gap-2">
                         <label for="date" class="text-[10px] md:text-xs lg:text-sm font-medium text-gray-700">Date *</label>
                         <input type="date" id="date" name="date" required
                             pattern="\d{4}-\d{2}-\d{2}"
                             class="w-full py-1 px-2 text-[10px] md:text-xs lg:text-sm lg:p-3 border bg-[#fcf9f8] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
 
+                    </div> --}}
+                    <div class="flex flex-col gap-2">
+                        <label for="Inquiring About" class="text-[10px] md:text-xs lg:text-sm font-medium text-gray-700">Inquiring About *</label>
+                        <select id="Inquiring About" name="inquiring_about" required
+                            class="w-full py-1 px-2 text-[10px] md:text-xs lg:text-sm lg:p-3 border bg-[#fcf9f8] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                            <option value="" disabled selected>Please choose an option</option>
+                            <option value="Mom">Mom</option>
+                            <option value="Dad">Dad</option>
+                            <option value="Wife">Wife</option>
+                            <option value="Husband">Husband</option>
+                            <option value="Grandpa">Grandpa</option>
+                            <option value="Grandma">Grandma</option>
+                            <option value="Friend">Friend</option>
+                            <option value="Some Else">Some Else</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="flex flex-col gap-2">
+                        <label for="Time Frame" class="text-[10px] md:text-xs lg:text-sm font-medium text-gray-700">Time Frame </label>
+                        <select id="Time Frame" name="time_frame" required
+                            class="w-full py-1 px-2 text-[10px] md:text-xs lg:text-sm lg:p-3 border bg-[#fcf9f8] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                            <option value="" disabled selected>Please choose an option</option>
+                            <option value="ASAP">ASAP</option>
+                            <option value="Within 1 Week">Within 1 Week </option>
+                            <option value="Less than 30 days">Less than 30 days</option>
+                            <option value="Less than 90 days ">Less than 90 days </option>
+                            <option value="More than 30 days">More than 30 days</option>
+                            <option value="Not Sure-Just Browsing">Not Sure-Just Browsing</option>
+                        </select>
                     </div>
                     <div class="flex flex-col gap-2">
-                        <label for="service" class="text-[10px] md:text-xs lg:text-sm font-medium text-gray-700">Service *</label>
-                        <select id="service" name="service" required
+                        <label for="Financial Options You Are Considering" class="text-[10px] md:text-xs lg:text-sm font-medium text-gray-700">Financial Options You Are Considering *</label>
+                        <select id="Financial Options You Are Considering" name="financial_option" required
                             class="w-full py-1 px-2 text-[10px] md:text-xs lg:text-sm lg:p-3 border bg-[#fcf9f8] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
-                            <option value="" disabled selected>Select Service</option>
-                            <option value="service1">Service 1</option>
-                            <option value="service2">Service 2</option>
+                             <option value="" disabled selected>Please choose an option</option>
+                            <option value="No Insurance-Self Funded">No Insurance-Self Funded</option>
+                            <option value="Private Insurance-Partially Funded">Private Insurance-Partially Funded</option>
+                            <option value="Private Insurance">Private Insurance</option>
+                            <option value="Medicare-Medicaid-etc">Medicare-Medicaid-etc</option>
+                            <option value="Not Sure-Just Browsing">Not Sure-Just Browsing</option>
+                            <option value="More">More</option>
                         </select>
                     </div>
                 </div>

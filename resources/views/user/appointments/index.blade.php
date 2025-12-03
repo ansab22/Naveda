@@ -11,8 +11,9 @@
         <tr>
             <th class="border p-2">Name</th>
             <th class="border p-2">Email</th>
-            <th class="border p-2">Date</th>
-            <th class="border p-2">Service</th>
+            <th class="border p-2">Inquiring About</th>
+            <th class="border p-2">Time Frame</th>
+            <th class="border p-2">Financial Options</th>
             <th class="border p-2">Message</th>
             <th class="border p-2">Status</th>
         </tr>
@@ -22,9 +23,10 @@
         <tr class="text-center">
             <td class="border p-2">{{ $appointment->name }}</td>
             <td class="border p-2">{{ $appointment->email }}</td>
-            <td class="border p-2">{{ $appointment->date }}</td>
-            <td class="border p-2">{{ $appointment->service }}</td>
-            <td class="border p-2">{{ $appointment->message ?? '-' }}</td>
+            <td class="border p-2">{{ $appointment->inquiring_about }}</td>
+            <td class="border p-2  max-w-[150px] truncate">{{ $appointment->time_frame }}</td>
+            <td class="border p-2  max-w-[150px] truncate">{{ $appointment->financial_option }}</td>
+            <td class="border p-2 max-w-[150px] truncate">{{ $appointment->message ?? '-' }}</td>
             <td class="px-4 py-2 border">
                 <span class="px-2 py-1 rounded 
         @if($appointment->status == 'approved') bg-green-200 text-green-800 

@@ -396,31 +396,18 @@ class AdminEditorController extends Controller
     // Handle items - merge with existing, preserve icons
     if (!empty($data['items']) && is_array($data['items'])) {
         foreach ($data['items'] as $i => $item) {
-            // Always preserve icon from existing or default
-            $data['items'][$i]['icon'] = $existing['items'][$i]['icon'] ?? $defaults['items'][$i]['icon'] ?? '';
-            
-            // Only update text if provided, else keep existing or default
-            if (empty($item['text'])) {
-                $data['items'][$i]['text'] = $existing['items'][$i]['text'] ?? $defaults['items'][$i]['text'] ?? '';
-            }
-            
-            // Only update link if provided, else keep existing or default
-            if (empty($item['link'])) {
-                $data['items'][$i]['link'] = $existing['items'][$i]['link'] ?? $defaults['items'][$i]['link'] ?? '';
-            }
-            
-            // Auto-format phone link
-            if (isset($data['items'][$i]['text']) && preg_match('/^\+?\d[\d\s\(\)\-]+$/', $data['items'][$i]['text'])) {
-                $phone = preg_replace('/[^\d+]/', '', $data['items'][$i]['text']);
-                if (!str_starts_with($data['items'][$i]['link'], 'tel:')) {
-                    $data['items'][$i]['link'] = 'tel:' . $phone;
-                }
-            }
+            $data['items'][$i]['icon'] = $item['icon']
+                ?? ($existing['items'][$i]['icon'] ?? $defaults['items'][$i]['icon']);
+            $data['items'][$i]['text'] = $item['text']
+                ?? ($existing['items'][$i]['text'] ?? $defaults['items'][$i]['text']);
+            $data['items'][$i]['link'] = $item['link']
+                ?? ($existing['items'][$i]['link'] ?? $defaults['items'][$i]['link']);
         }
     } else {
         $data['items'] = $existing['items'] ?? $defaults['items'];
     }
 }
+
 
 
 

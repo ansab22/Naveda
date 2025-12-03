@@ -207,10 +207,10 @@
 
             @php
             $items = $data['home.experience']['items'] ?? [
-            ["number" => 35, "suffix" => "+", "title" => "Years of Experience", "desc" => "Lorem ipsum dolor sit amet."],
-            ["number" => 140, "suffix" => "", "title" => "Professional Staffs", "desc" => "Lorem ipsum dolor sit amet."],
-            ["number" => 6.2, "suffix" => "K+", "title" => "Happy Patients", "desc" => "Lorem ipsum dolor sit amet."],
-            ["number" => 99.9, "suffix" => "%", "title" => "Positive Reviews", "desc" => "Lorem ipsum dolor sit amet."]
+            ["number" => 35, "suffix" => "+", "title" => "Years of Experience", "desc" => ""],
+            ["number" => 140, "suffix" => "", "title" => "Professional Staffs", "desc" => ""],
+            ["number" => 6.2, "suffix" => "K+", "title" => "Happy Patients", "desc" => ""],
+            ["number" => 99.9, "suffix" => "%", "title" => "Positive Reviews", "desc" => ""]
             ];
             @endphp
 
@@ -338,12 +338,12 @@
             {{-- Services Items --}}
             @php
             $services = $data['home.service']['items'] ?? [
-            ["title" => "In-Home Care", "desc" => "Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", "icon" => "", "link" => "#"],
-            ["title" => "Assisted Living", "desc" => "Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", "icon" => "", "link" => "#"],
-            ["title" => "Memory Care", "desc" => "Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", "icon" => "", "link" => "#"],
-            ["title" => "Hospice Care", "desc" => "Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", "icon" => "", "link" => "#"],
-            ["title" => "Cardiac Care", "desc" => "Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", "icon" => "", "link" => "#"],
-            ["title" => "In-Call Ambulance", "desc" => "Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", "icon" => "", "link" => "#"],
+            ["title" => "In-Home Care", "desc" => "", "icon" => "", "link" => "#"],
+            ["title" => "Assisted Living", "desc" => "", "icon" => "", "link" => "#"],
+            ["title" => "Memory Care", "desc" => "", "icon" => "", "link" => "#"],
+            ["title" => "Hospice Care", "desc" => "", "icon" => "", "link" => "#"],
+            ["title" => "Cardiac Care", "desc" => "", "icon" => "", "link" => "#"],
+            ["title" => "In-Call Ambulance", "desc" => "", "icon" => "", "link" => "#"],
             ];
             @endphp
 
@@ -816,7 +816,7 @@
                 {{-- First Paragraph --}}
                 <label class="block font-medium">First Paragraph</label>
                 <textarea name="data[first_paragraph]" rows="3"
-                    class="w-full border p-2 rounded">{{ $data['home.aboutEldera']['first_paragraph'] ?? 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper vehicula suscipit. Phasellus euismod dui lacinia, venenatis magna non, pretium felis. Nulla velit turpis, congue nec elit sit amet, sodales feugiat neque.' }}</textarea>
+                    class="w-full border p-2 rounded">{{ $data['home.aboutEldera']['first_paragraph'] ?? '' }}</textarea>
 
                 {{-- Second Paragraph --}}
                 <label class="block font-medium">Second Paragraph</label>
@@ -922,7 +922,7 @@
                 {{-- Description --}}
                 <label class="block font-medium">Description</label>
                 <textarea name="data[description]" rows="3"
-                    class="w-full border p-2 rounded">{{ $data['about.service']['description'] ?? 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.' }}</textarea>
+                    class="w-full border p-2 rounded">{{ $data['about.service']['description'] ?? '' }}</textarea>
             </div>
 
             {{-- Main Image --}}
@@ -955,37 +955,37 @@
             $services = $data['about.service']['items'] ?? [
             [
             "title" => "Passion",
-            "description" => "Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis leo.",
+            "description" => "",
             "icon" => "fa-solid fa-pencil",
             "image" => ""
             ],
             [
             "title" => "Community",
-            "description" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.",
+            "description" => "",
             "icon" => "fa-solid fa-users",
             "image" => ""
             ],
             [
             "title" => "Commitment",
-            "description" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.",
+            "description" => "",
             "icon" => "fa-solid fa-gear",
             "image" => ""
             ],
             [
             "title" => "Growth",
-            "description" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.",
+            "description" => "",
             "icon" => "fa-solid fa-chart-simple",
             "image" => ""
             ],
             [
             "title" => "Honesty",
-            "description" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.",
+            "description" => "",
             "icon" => "fa-solid fa-lock",
             "image" => ""
             ],
             [
             "title" => "Team Work",
-            "description" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.",
+            "description" => "",
             "icon" => "fa-solid fa-user",
             "image" => ""
             ]

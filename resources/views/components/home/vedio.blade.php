@@ -13,7 +13,7 @@ $data = Content::getData('home.vedio');
         {{-- Custom thumbnail uploaded by admin --}}
         <img src="{{ asset('storage/'.$data['image']) }}"
             alt="Video thumbnail"
-            class="rounded-xl w-full object-cover h-[40vh] md:h-[60vh] lg:h-[80vh]">
+            class="rounded-xl w-full object-cover h-[40vh] md:h-[60vh] lg:h-[117vh]">
         @else
         {{-- Default looping background video --}}
         <video autoplay muted loop playsinline

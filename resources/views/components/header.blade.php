@@ -17,6 +17,7 @@
             <a href="{{ route('about') }}" class="text-[#0C0C0C85] text-sm hover:text-gray-700 font-medium">About</a>
             <a href="{{ route('services') }}" class="text-[#0C0C0C85] text-sm hover:text-gray-700 font-medium">Services</a>
             <a href="{{ route('appointment') }}" class="text-[#0C0C0C85] text-sm hover:text-gray-700 font-medium">Appointment</a>
+            <a href="{{ route('gallery') }}" class="text-[#0C0C0C85] text-sm hover:text-gray-700 font-medium">Gallery</a>
             <a href="{{ route('faqs') }}" class="text-[#0C0C0C85] text-sm hover:text-gray-700 font-medium">Faqs</a>
             <a href="{{ route('pricing') }}" class="text-[#0C0C0C85] text-sm hover:text-gray-700 font-medium">Pricing</a>
             <a href="{{ route('contact') }}" class="text-[#0C0C0C85] hover:text-black text-sm font-medium">Contact</a>

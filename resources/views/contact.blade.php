@@ -9,7 +9,7 @@ on in-home care, assisted living, memory care, hospice, cardiac care & more.')
 <div class="bg-white py-12 w-[85%] mx-auto">
     <x-about.hero-about
         title="Contact Us"
-        breadcrumb='Home <i class="fa-solid fa-arrow-right text-[#c4cffa] px-2 lg:px-5 text-[10px] lg:text-[14px]"></i> COntact Us'
+        breadcrumb='Home <i class="fa-solid fa-arrow-right text-[#c4cffa] px-2 lg:px-5 text-[10px] lg:text-[14px]"></i> Contact Us'
         image="/images/about2.jpg" />
     <x-contact.contactForm />
     @php
@@ -28,7 +28,7 @@ on in-home care, assisted living, memory care, hospice, cardiac care & more.')
         src="https://www.google.com/maps?q={{ urlencode($mapLocation) }}&output=embed">
     </iframe>
 
-    <x-home.faqHome />
+    {{-- <x-home.faqHome /> --}}
 </div>
 <div class="lg:-mt-[120px]">
     <x-home.startedHome />

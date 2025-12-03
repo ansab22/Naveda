@@ -65,31 +65,33 @@
         <h2 class="text-lg font-bold mb-4">Appointments</h2>
 
         <!-- ✅ Table wrapper with fixed height & vertical scroll -->
-        <div class="overflow-x-auto w-full">
-            <div class="max-h-[500px] overflow-y-auto border border-gray-200 rounded-lg">
+        <div class="overflow-x-auto w-full ">
+            <div class="max-h-[500px] border border-gray-200 rounded-lg">
                 <table class="table-auto w-full">
                     <thead class="bg-gray-100 sticky top-0 z-10">
                         <tr>
-                            <th class="px-4 py-2 border">Name</th>
-                            <th class="px-4 py-2 border">Phone</th>
-                            <th class="px-4 py-2 border">Email</th>
-                            <th class="px-4 py-2 border">Date</th>
-                            <th class="px-4 py-2 border">Service</th>
-                            <th class="px-4 py-2 border">Message</th>
-                            <th class="px-4 py-2 border">Status</th>
-                            <th class="px-4 py-2 border">Action</th>
+                            <th class="px-2 py-2 border">Name</th>
+                            <th class="px-2 py-2 border">Phone</th>
+                            <th class="px-2 py-2 border">Email</th>
+                            <th class="px-2 py-2 text-sm font-medium text-gray-700">Inquiring About</th>
+                                    <th class="px-2 py-2 text-sm font-medium text-gray-700">Time Frame</th>
+                                    <th class="px-2 py-2 text-sm font-medium text-gray-700">Financial Options</th>
+                            <th class="px-0 py-2 border">Message</th>
+                            <th class="px-0 py-2 border">Status</th>
+                            <th class="px-2 py-2 border">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($appointments as $appointment)
                         <tr class="hover:bg-gray-50">
-                            <td class="px-4 py-2">{{ $appointment->name }}</td>
-                            <td class="px-4 py-2">{{ $appointment->phone }}</td>
-                            <td class="px-4 py-2">{{ $appointment->email }}</td>
-                            <td class="px-4 py-2">{{ $appointment->date }}</td>
-                            <td class="px-4 py-2">{{ $appointment->service }}</td>
-                            <td class="px-4 py-2">{{ $appointment->message }}</td>
-                            <td class="px-4 py-2">
+                            <td class="px-2 py-2">{{ $appointment->name }}</td>
+                            <td class="px-2 py-2">{{ $appointment->phone }}</td>
+                            <td class="px-0 py-2">{{ $appointment->email }}</td>
+                             <td class="px-2 py-2 max-w-[50px] truncate">{{ $appointment->inquiring_about }}</td>
+                                    <td class="px-2 py-2 max-w-[50px] truncate">{{ $appointment->time_frame }}</td>
+                                    <td class="px-2 py-2 max-w-[50px] truncate">{{ $appointment->financial_option }}</td>
+                            <td class="px-0 py-2">{{ $appointment->message }}</td>
+                            <td class="px-0 py-2">
                                 <span class="px-1 py-1 rounded 
                                 @if($appointment->status == 'approved') bg-green-200 text-green-800
                                 @elseif($appointment->status == 'rejected') bg-red-200 text-red-800 

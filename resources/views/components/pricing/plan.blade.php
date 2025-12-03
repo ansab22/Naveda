@@ -1,114 +1,92 @@
-@php
-use App\Models\Content;
+<section class="w-full py-12 lg:py-20 bg-white">
 
-$pricing = Content::getData('home.pricing');
+    <div class="">
 
-$badge = $pricing['badge'] ?? 'Our Packages';
-$heading = $pricing['heading'] ?? 'Choose Your Package';
-$button = $pricing['button'] ?? ['text' => 'Get In Touch', 'link' => '#'];
+        <!-- Heading -->
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
+            How much does memory care cost?
+        </h2>
 
-$defaultPackages = [
-[
-"price" => "$400",
-"title" => "Basic Package",
-"desc" => "Lorem ipsum dolor sit amet, consec tetur adipiscing elit.",
-"features" => ["Personal Care Assistance", "Meal Preparation", "Medication Reminders", "Companionship"],
-"button_text" => "Get Started",
-"button_link" => "#"
-],
-[
-"price" => "$520",
-"title" => "Standard Package",
-"desc" => "Lorem ipsum dolor sit amet, consec tetur adipiscing elit.",
-"features" => ["Personal Care Assistance", "Meal Preparation", "Medication Reminders", "Transportation Support"],
-"button_text" => "Get Started",
-"button_link" => "#"
-],
-[
-"price" => "$640",
-"title" => "Premium Package",
-"desc" => "Lorem ipsum dolor sit amet, consec tetur adipiscing elit.",
-"features" => ["Personal Care Assistance", "Meal Preparation", "Medication Reminders", "24/7 Support"],
-"button_text" => "Get Started",
-"button_link" => "#"
-],
-];
+        <p class="text-gray-600 leading-relaxed mb-10">
+            It depends on several factors. The most important factor is the diagnosis of the resident. 
+            The primary and secondary diagnosis from a doctor should tell you what type of supervision 
+            is needed: Skilled or Non-skilled. If it is Non-skilled, then the resident is appropriate 
+            for Assisted Living with Memory Care or a Group Home Setting.
+        </p>
 
-$items = [];
-for ($i = 0; $i < 3; $i++) {
-    $dbItem=$pricing['items'][$i] ?? [];
+        <!-- Diagnosis Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
-    // Pehle default ke sath merge karo (except features)
-    $temp=array_merge(
-    $defaultPackages[$i],
-    array_filter($dbItem, fn($v)=> $v !== '' && $v !== null && $v !== [])
-    );
-
-    // Features fallback handle
-    if (!empty($dbItem['features']) && is_array($dbItem['features'])) {
-    $temp['features'] = $dbItem['features']; // agar update hai to wahi lo
-    } else {
-    $temp['features'] = $defaultPackages[$i]['features']; // warna default features
-    }
-
-    $items[$i] = $temp;
-    }
-
-    @endphp
-
-
-
-    <div class="w-full px-0 lg:mt-[90px] mt-[20px] lg:mb-[50px] flex flex-col gap-10 sm:gap-16">
-
-        <!-- Header -->
-        <div class="flex flex-col sm:flex-row gap-6 sm:gap-3 items-start sm:items-center justify-between">
-            <div class="flex flex-col justify-start items-start gap-4 sm:gap-6">
-                <span class="inline-block px-3 lg:px-4 md:px-3 py-1 text-[10px] md:text-[8px] lg:text-[13px] font-medium text-gray-500 bg-[#f5f4f0] rounded-full w-fit">
-                    {{ $badge }}
-                </span>
-                <h1 class="text-2xl sm:text-4xl md:text-5xl lg:text-[54px] text-gray-900 text-left leading-tight">
-                    {{ $heading }}
-                </h1>
+            <div class="bg-white border rounded-xl shadow-sm p-6 flex flex-col items-center text-center">
+                <img src="images/MCI.webp" class="w-70 object-contain mb-4" />
+                <h3 class="text-lg font-semibold text-gray-700">MCI (Mild Cognitive Impairment)</h3>
             </div>
-            <a href="{{ $button['link'] ?? '#' }}"
-                class="px-4 py-2 md:px-6 md:py-3 rounded-full bg-indigo-100 font-medium hover:bg-[#f5f4f0] text-[10px] lg:text-sm transition-colors duration-700 ease-in-out w-fit">
-                {{ $button['text'] ?? 'Get In Touch' }}
-            </a>
+
+            <div class="bg-white border rounded-xl shadow-sm p-6 flex flex-col items-center text-center">
+                <img src="/images/Dementia.webp" class="w-70 object-contain mb-4" />
+                <h3 class="text-lg font-semibold text-gray-700">Dementia</h3>
+            </div>
+
+            <div class="bg-white border rounded-xl shadow-sm p-6 flex flex-col items-center text-center">
+                <img src="/images/Chronic.webp" class="w-70 object-contain mb-4" />
+                <h3 class="text-lg font-semibold text-gray-700">Chronic Illness</h3>
+            </div>
+
         </div>
 
-        <!-- Packages -->
-        <div class="flex flex-col lg:flex-row w-full gap-10">
-            @foreach($items as $item)
-            <div class="bg-[#f6f6f6] shadow rounded-2xl w-full lg:w-[33.3%] p-6 lg:p-10 flex flex-col justify-between">
+        <!-- Physical Conditions -->
+        <h3 class="mt-12 text-xl font-semibold text-gray-800">
+            Physical condition at the time of admission
+        </h3>
 
-                <div class="flex items-baseline gap-2">
-                    <h2 class="text-4xl lg:text-6xl text-gray-900">{{ $item['price'] ?? '' }}</h2>
-                    <p class="text-[10px] lg:text-sm font-medium text-gray-800">/ Package</p>
-                </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-6">
 
-                <h2 class="mt-4 text-lg lg:text-2xl text-gray-900">{{ $item['title'] ?? '' }}</h2>
-                <p class="mt-1 lg:mt-2 text-gray-500 text-[10px]">{{ $item['desc'] ?? '' }}</p>
-
-                <hr class="my-6 border-gray-200">
-
-                <h4 class="text-gray-900 font-medium mb-4 text-xs lg:text-sm">What's included?</h4>
-                <ul class="space-y-3 text-gray-700">
-                    @foreach($item['features'] ?? [] as $feature)
-                    <div class="flex items-center gap-2 lg:gap-3">
-                        <i class="fa-solid fa-check text-[#c4cffa] text-[10px]"></i>
-                        <p class="text-xs lg:text-base">{{ $feature }}</p>
-                    </div>
-                    @endforeach
-                </ul>
-
-                <div class="mt-6">
-                    <a href="{{ $item['button_link'] ?? '#' }}"
-                        class="w-full block text-center bg-indigo-100 text-black-800 text-xs lg:text-sm font-semibold py-3 rounded-full hover:bg-white duration-500">
-                        {{ $item['button_text'] ?? 'Get Started' }}
-                    </a>
-                    <p class="mt-3 text-[10px] lg:text-xs text-gray-500">*Terms and Conditions apply</p>
-                </div>
+            <div class="bg-gray-50 border rounded-xl p-5 flex flex-col items-center text-center">
+                <img src="/images/active.webp" class="w-14 mb-4" />
+                <p class="font-semibold text-gray-700">Mobile & Active</p>
             </div>
-            @endforeach
+
+            <div class="bg-gray-50 border rounded-xl p-5 flex flex-col items-center text-center">
+                <img src="/images/mobility.webp" class="w-14 mb-4" />
+                <p class="font-semibold text-gray-700">
+                    Mobile but needs help (cane, walker, wheelchair)
+                </p>
+            </div>
+
+            <div class="bg-gray-50 border rounded-xl p-5 flex flex-col items-center text-center">
+                <img src="/images/immobile.webp" class="w-14 mb-4" />
+                <p class="font-semibold text-gray-700">Immobile or bedridden</p>
+            </div>
+
         </div>
+
+        <!-- Additional Factors -->
+        <h3 class="mt-12 text-xl font-semibold text-gray-800">
+            Additional factors considered in pricing
+        </h3>
+
+        <ul class="mt-4 space-y-2 text-gray-600">
+            <li>• Incontinence</li>
+            <li>• Uninterrupted sleep at night</li>
+            <li>• Aggressive behavior</li>
+            <li>• Medication Management</li>
+        </ul>
+
+        <!-- Categories -->
+        <h3 class="mt-12 text-xl font-semibold text-gray-800">
+            Care Category Levels
+        </h3>
+
+        <ul class="mt-4 space-y-2 text-gray-700 font-semibold">
+            <li>• Category 1</li>
+            <li>• Category 2</li>
+        </ul>
+
+        <p class="mt-10 text-gray-600">
+            To get detailed pricing, please call our admission coordinator or fill out the inquiry form 
+            and we will contact you with personalized information.
+        </p>
+
     </div>
+
+</section>

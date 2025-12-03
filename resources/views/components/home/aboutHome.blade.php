@@ -37,16 +37,16 @@ $data = Content::getData('home.aboutHome');
 
             {{-- Description allow HTML --}}
             <div class="text-gray-600 text-[10px] md:text-xs lg:text-base space-y-3">
-                {!! $data['description'] ?? '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>' !!}
+                {!! $data['description'] ?? '<p></p>' !!}
             </div>
 
             <!-- Buttons -->
             <div class="flex flex-wrap gap-4">
-                <a href="{{ $data['button_link'] ?? '#' }}"
+                <a href="{{ $data['button_link'] ??  route('contact') }}"
                     class="px-4 py-2 md:px-6 md:py-3 rounded-full bg-indigo-100 font-medium hover:bg-[#f5f4f0] text-[10px] lg:text-sm transition-colors duration-700 ease-in-out w-fit">
                     {{ $data['button_text'] ?? 'Get In Touch' }}
                 </a>
-                <a href="{{ $data['secondary_button_link'] ?? '#' }}"
+                <a href="{{ $data['secondary_button_link'] ??  route('appointment') }}"
                     class="flex items-center text-[10px] lg:text-sm text-gray-800 font-medium transition group gap-2">
                     {{ $data['secondary_button_text'] ?? 'Appointment' }}
                     <span class="text-[#c4cffa] group-hover:text-black">

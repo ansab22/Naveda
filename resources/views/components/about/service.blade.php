@@ -8,42 +8,42 @@ $serviceData = Content::getData('about.service');
 $defaults = [
 'badge' => 'Our Values',
 'heading' => 'Pursuing Excellence with Refined Care',
-'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.',
+'description' => '',
 'image' => '',
 'items' => [
 [
 'title' => 'Passion',
-'description' => 'Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis leo.',
+'description' => '',
 'icon' => 'fa-solid fa-pencil',
 'image' => ''
 ],
 [
 'title' => 'Community',
-'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.',
+'description' => '',
 'icon' => 'fa-solid fa-users',
 'image' => ''
 ],
 [
 'title' => 'Commitment',
-'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.',
+'description' => '',
 'icon' => 'fa-solid fa-gear',
 'image' => ''
 ],
 [
 'title' => 'Growth',
-'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.',
+'description' => '',
 'icon' => 'fa-solid fa-chart-simple',
 'image' => ''
 ],
 [
 'title' => 'Honesty',
-'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.',
+'description' => '',
 'icon' => 'fa-solid fa-lock',
 'image' => ''
 ],
 [
 'title' => 'Team Work',
-'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.',
+'description' => '',
 'icon' => 'fa-solid fa-user',
 'image' => ''
 ]

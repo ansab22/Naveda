@@ -127,28 +127,7 @@ $members = $team['members'] ?? $defaultTeam['members'];
                         {{ $member['position'] ?? 'Staff Member' }}
                     </p>
 
-                    <div class="flex gap-3 sm:gap-4">
-
-                        <a href="{{ $member['facebook'] }}" target="_blank"
-                            class="text-[12px] sm:text-[14px] text-[#c4cffa] hover:text-black cursor-pointer transition-colors">
-                            <i class="fa-brands fa-facebook-f"></i>
-                        </a>
-
-
-
-                        <a href="{{ $member['linkedin'] }}" target="_blank"
-                            class="text-[14px] sm:text-[16px] text-[#c4cffa] hover:text-black cursor-pointer transition-colors">
-                            <i class="fa-brands fa-linkedin-in"></i>
-                        </a>
-
-
-
-                        <a href="tel:{{ $member['phone'] }}"
-                            class="text-[12px] sm:text-[14px] text-[#c4cffa] hover:text-black cursor-pointer transition-colors">
-                            <i class="fa-solid fa-phone"></i>
-                        </a>
-
-                    </div>
+                    
                 </div>
             </div>
         </div>

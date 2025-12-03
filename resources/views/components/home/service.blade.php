@@ -7,12 +7,12 @@ $services = Content::getData('home.service');
 $defaultBadge = 'Our Services';
 $defaultHeading = 'Expertise and Compassion You Can Trust';
 $defaultItems = [
-["title" => "In-Home Care", "desc" => "Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", "icon" => "images/icon1.png", "link" => "#"],
-["title" => "Assisted Living", "desc" => "Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", "icon" => "images/icon2.png", "link" => "#"],
-["title" => "Memory Care", "desc" => "Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", "icon" => "images/icon3.png", "link" => "#"],
-["title" => "Hospice Care", "desc" => "Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", "icon" => "images/icon4.png", "link" => "#"],
-["title" => "Cardiac Care", "desc" => "Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", "icon" => "images/icon5.png", "link" => "#"],
-["title" => "In-Call Ambulance", "desc" => "Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", "icon" => "images/icon6.png", "link" => "#"],
+["title" => "In-Home Care", "desc" => " ", "icon" => "images/icon11.png", "link" => "#"],
+["title" => "Assisted Living", "desc" => "", "icon" => "images/icon12.png", "link" => "#"],
+["title" => "Memory Care", "desc" => "", "icon" => "images/icon13.png", "link" => "#"],
+["title" => "Hospice Care", "desc" => "", "icon" => "images/icon14.png", "link" => "#"],
+["title" => "Cardiac Care", "desc" => "", "icon" => "images/icon15.png", "link" => "#"],
+["title" => "In-Call Ambulance", "desc" => "", "icon" => "images/icon16.png", "link" => "#"],
 ];
 
 // Use saved data or fallback to default
@@ -69,7 +69,7 @@ $items = $services['items'] ?? $defaultItems;
 
             <div class="bg-[#f6f6f6] rounded-2xl p-6 sm:p-8">
                 <div class="mb-6">
-                    <img src="{{ $src }}" alt="{{ $title }}" class="w-10 sm:w-12 h-10 sm:h-12 object-contain"
+                    <img src="{{ $src }}" alt="{{ $title }}" class="w-10 sm:w-16 h-10 sm:h-16 object-contain"
                         onerror="this.src='{{ asset('images/default-icon.png') }}'">
                 </div>
                 <h3 class="mt-4 md:mt-14 text-xl sm:text-2xl lg:text-[26px] font-light text-black">

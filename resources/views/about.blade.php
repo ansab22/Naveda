@@ -20,16 +20,12 @@ services.')
         <x-about.service />
     </div>
 </div>
-<div class="-mt-[20px] lg:-mt-[120px]">
+{{-- <div class="-mt-[20px] lg:-mt-[120px]">
     <x-home.vedio />
-</div>
+</div> --}}
 <x-home.mission />
-<div class="bg-[#f5f4f0] py-12 ">
-    <div class="w-[85%] mx-auto">
-        <x-home.teamHome />
+    <div class="bg-white pb-12 w-[85%] mx-auto">
+        <x-home.appointmentHome />
     </div>
-</div>
-<div class="bg-white py-12 w-[85%] mx-auto">
-    <x-home.faqHome />
-</div>
+
 @endsection

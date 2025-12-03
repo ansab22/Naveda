@@ -14,8 +14,9 @@ class Appointment extends Model
         'name',
         'phone',
         'email',
-        'date',
-        'service',
+        'inquiring_about',
+        'time_frame',
+        'financial_option',
         'message',
         'user_id',
         'status'

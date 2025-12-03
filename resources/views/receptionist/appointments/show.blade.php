@@ -62,8 +62,9 @@
                                     <th class="px-4 py-2 text-sm font-medium text-gray-700">Name</th>
                                     <th class="px-4 py-2 text-sm font-medium text-gray-700">Phone</th>
                                     <th class="px-4 py-2 text-sm font-medium text-gray-700">Email</th>
-                                    <th class="px-4 py-2 text-sm font-medium text-gray-700">Date</th>
-                                    <th class="px-4 py-2 text-sm font-medium text-gray-700">Service</th>
+                                    <th class="px-4 py-2 text-sm font-medium text-gray-700">Inquiring About</th>
+                                    <th class="px-4 py-2 text-sm font-medium text-gray-700">Time Frame</th>
+                                    <th class="px-4 py-2 text-sm font-medium text-gray-700">Financial Options</th>
                                     <th class="px-4 py-2 text-sm font-medium text-gray-700">Message</th>
                                     <th class="px-4 py-2 text-sm font-medium text-gray-700">Status</th>
                                     <th class="px-4 py-2 text-sm font-medium text-gray-700">Actions</th>
@@ -75,8 +76,9 @@
                                     <td class="px-4 py-2">{{ $appointment->name }}</td>
                                     <td class="px-4 py-2">{{ $appointment->phone }}</td>
                                     <td class="px-4 py-2">{{ $appointment->email }}</td>
-                                    <td class="px-4 py-2">{{ $appointment->date }}</td>
-                                    <td class="px-4 py-2">{{ $appointment->service }}</td>
+                                    <td class="px-4 py-2 max-w-[150px] truncate">{{ $appointment->inquiring_about }}</td>
+                                    <td class="px-4 py-2 max-w-[150px] truncate">{{ $appointment->time_frame }}</td>
+                                    <td class="px-4 py-2 max-w-[150px] truncate">{{ $appointment->financial_option }}</td>
                                     <td class="px-4 py-2">{{ $appointment->message }}</td>
                                     <td class="px-4 py-2">
                                         <span class="px-2 py-1 rounded 

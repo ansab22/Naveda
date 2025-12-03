@@ -15,7 +15,10 @@ living, memory care, hospice care, cardiac care & in-call ambulance support.')
 </div>
 
 <x-home.startedHome />
-<div class="bg-white py-12 w-[85%] mx-auto">
+{{-- <div class="bg-white py-12 w-[85%] mx-auto">
     <x-home.faqHome />
-</div>
+</div> --}}
+    <div class="bg-white pb-12 w-[85%] mx-auto">
+        <x-home.appointmentHome />
+    </div>
 @endsection

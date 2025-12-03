@@ -67,7 +67,7 @@ $aboutEldera = Content::getData('home.aboutEldera');
         <!-- Right Content -->
         <div class="flex flex-col gap-[20px] lg:gap-[55px] w-full">
             @php
-            $firstPara = $aboutEldera['first_paragraph'] ?? 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper vehicula suscipit. Phasellus euismod dui lacinia, venenatis magna non, pretium felis. Nulla velit turpis, congue nec elit sit amet, sodales feugiat neque.';
+            $firstPara = $aboutEldera['first_paragraph'] ?? '';
             $secondPara = $aboutEldera['second_paragraph'] ?? 'Mauris in neque viverra, volutpat elit vitae, consequat arcu. Phasellus condimentum luctus turpis, sed mollis quam tempus eget. Vivamus non tellus varius, sollicitudin diam quis, sagittis libero.';
             
             // Check if each paragraph needs Read More (300 characters limit)

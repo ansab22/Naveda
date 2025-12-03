@@ -22,16 +22,16 @@ $about = Content::getData('home.aboutHome') ?? [];
 
         <!-- Paragraph -->
         <p class="text-gray-600 text-[10px] md:text-xs lg:text-base text-center">
-            {{ $about['description'] ?? 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper vehicula suscipit. Phasellus euismod dui lacinia.' }}
+            {{ $about['description'] ?? '' }}
         </p>
 
         <!-- Buttons -->
         <div class="flex flex-wrap justify-center gap-4 pt-4">
-            <a href="{{ $about['button_link'] ?? '#' }}"
+            <a href="{{ $about['button_link'] ?? route('contact') }}"
                 class="px-4 py-2 md:px-6 md:py-3 rounded-full bg-indigo-200 font-medium hover:bg-[#f5f4f0] text-[10px] lg:text-sm transition-colors duration-700 ease-in-out w-fit">
                 {{ $about['button_text'] ?? 'Get In Touch' }}
             </a>
-            <a href="{{ $about['secondary_button_link'] ?? '#' }}"
+            <a href="{{ $about['secondary_button_link'] ?? route('appointment') }}"
                 class="flex items-center text-[10px] lg:text-sm text-gray-800 font-medium transition group gap-2">
                 {{ $about['secondary_button_text'] ?? 'Appointment' }}
                 <span class="text-[#c4cffa] group-hover:text-black">
